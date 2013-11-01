@@ -1,3 +1,5 @@
+package edu.lehigh.cse216.fall13.bugs.business;
+
 import java.util.Date;
 //import user, comment
 
@@ -48,11 +50,11 @@ public class Bug{
     }
 
     public String getVersion(){
-	return version();
+	return version;
     }
 
     public boolean isFixed(){
-	return fixed();
+	return false; //TODO: need to really not have this.
     }
 
     public String getDescription(){

@@ -1,3 +1,5 @@
+package edu.lehigh.cse216.fall13.bugs.business;
+
 public class User{
 
     private String firstName;

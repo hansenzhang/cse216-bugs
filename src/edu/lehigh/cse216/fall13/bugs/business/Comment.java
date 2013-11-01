@@ -1,5 +1,7 @@
+package edu.lehigh.cse216.fall13.bugs.business;
+
 //import the user class
-import java.util.Date
+import java.util.Date;
 
 public class Comment{
 
