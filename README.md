@@ -1,3 +1,4 @@
 cse216--bugs
 ============
-hello
+
+We'll be filling this out as we go...
