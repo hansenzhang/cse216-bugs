@@ -20,7 +20,7 @@ public class Bug{
 	this.version = version;
 	this.description = description;
 	this.category = category;
-    } 
+    }
 
     public void updateVersion(){
 	// not sure how we're doing this

@@ -5,9 +5,6 @@
 package edu.lehigh.cse216.fall13.bugs.database;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
