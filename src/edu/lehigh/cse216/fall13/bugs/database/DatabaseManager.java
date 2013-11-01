@@ -14,7 +14,7 @@ import org.hibernate.Transaction;
  *
  * @author hansen
  */
-public class Database {
+public class DatabaseManager {
     private static SessionFactory factory; 
    
    /* Method to CREATE an employee in the database */

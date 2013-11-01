@@ -11,7 +11,7 @@ package edu.lehigh.cse216.fall13.bugs.gui;
 public class EditView extends javax.swing.JFrame {
 
     /**
-     * Creates new form EditView
+     * Creates new form NewJFrame
      */
     public EditView() {
         initComponents();
