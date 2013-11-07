@@ -4,6 +4,8 @@
  */
 package edu.lehigh.cse216.fall13.bugs.gui;
 
+import edu.lehigh.cse216.fall13.bugs.business.Bug;
+
 /**
  *
  * @author hansen
@@ -59,6 +61,11 @@ public class MainGui extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList1);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -103,6 +110,11 @@ public class MainGui extends javax.swing.JFrame {
         this.setVisible(false);
         new AddView(this).setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
+
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+        Bug b = (Bug) jList1.getSelectedValue();
+        new ReportView(this, b).setVisible(true);
+    }//GEN-LAST:event_jList1MouseClicked
 
     /**
      * @param args the command line arguments

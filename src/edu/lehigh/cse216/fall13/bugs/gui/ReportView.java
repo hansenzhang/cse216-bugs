@@ -4,6 +4,9 @@
  */
 package edu.lehigh.cse216.fall13.bugs.gui;
 
+import edu.lehigh.cse216.fall13.bugs.business.Bug;
+import javax.swing.JFrame;
+
 /**
  *
  * @author hansen
@@ -14,6 +17,15 @@ public class ReportView extends javax.swing.JFrame {
      * Creates new form ReportView
      */
     public ReportView() {
+        initComponents();
+    }
+    
+    /**
+     * 
+     * @param parent
+     * @param b 
+     */
+    public ReportView(JFrame parent, Bug b) {
         initComponents();
     }
 
