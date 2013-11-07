@@ -5,6 +5,7 @@
 package edu.lehigh.cse216.fall13.bugs.controller;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
+import edu.lehigh.cse216.fall13.bugs.database.DatabaseManager;
 import java.util.ArrayList;
 
 /**
@@ -12,27 +13,30 @@ import java.util.ArrayList;
  * @author hansen
  */
 public class MainController {
+    public static MainController instance;
     MainController() {
         //default
     }
     
-    void add (Bug b) {
-    
+    public Bug add (Bug b) {        
+        int bugId = DatabaseManager.instance.addBug(b);
+        return view(bugId);
     }
     
-    ArrayList<Bug> list () {
-        return null; //TODO: only for now, I'm not constructing this    
+    public ArrayList<Bug> list() {
+        return DatabaseManager.instance.listBugs();        
     }
     
-    Bug view (int bugId) {
+    public Bug view (int bugId) {
+        return DatabaseManager.instance.getBug(bugId);
+    }
+    
+    public ArrayList<Bug> search(String... strings) {
         return null;
     }
     
-    ArrayList<Bug> search(String... strings) {
-        return null;
-    }
-    
-    Bug edit (int bugId) {
-        return null;
+    public void edit (Bug b) {
+        DatabaseManager.instance.editBug(b);
+        //TODO: return the correct bug to the gui.
     }
 }

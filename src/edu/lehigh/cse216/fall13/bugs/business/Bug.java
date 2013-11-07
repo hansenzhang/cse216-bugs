@@ -16,7 +16,9 @@ public class Bug{
     private String description;
     private String category;
 
-
+    public Bug () {
+    }
+    
     /**
      * Constructor for the Bug object.
      * Creates a date object to store when it was created.
@@ -45,6 +47,8 @@ public class Bug{
 
     /**
      * Used to add a comment to the class
+     * @param user
+     * @param msg
      */
     public void addComment(User user, String msg){
 	Comment c = new Comment(bugID, user, msg);
@@ -54,6 +58,7 @@ public class Bug{
     //Setters
     /**
      * Used to edit the description of the Bug
+     * @param newDescription
      */
     public void editDescription(String newDescription){
 	description = newDescription;

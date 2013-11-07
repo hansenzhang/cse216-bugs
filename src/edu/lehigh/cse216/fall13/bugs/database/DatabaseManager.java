@@ -5,6 +5,7 @@
 package edu.lehigh.cse216.fall13.bugs.database;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
+import java.util.ArrayList;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,9 +17,11 @@ import org.hibernate.Transaction;
  */
 public class DatabaseManager {
     private static SessionFactory factory; 
+    
+    public static DatabaseManager instance;
    
    /* Method to CREATE an employee in the database */
-   public Integer addEmployee(String fname, String lname, int salary){
+   public Integer addBug(Bug b){
       Session session = factory.openSession();
       Transaction tx = null;
       Integer employeeID = null;
@@ -36,7 +39,7 @@ public class DatabaseManager {
       return employeeID;
    }
    /* Method to  READ all the employees */
-   public void listEmployees( ){
+   public ArrayList<Bug> listBugs(){
       Session session = factory.openSession();
       Transaction tx = null;
       try{
@@ -56,7 +59,13 @@ public class DatabaseManager {
       }finally {
          session.close(); 
       }
+      return null;
    }
+   
+   public Bug getBug (int bugId) {
+       return null;
+   }
+   
    /* Method to UPDATE salary for an employee */
    public void editBug(Bug b){
       Session session = factory.openSession();
@@ -76,7 +85,7 @@ public class DatabaseManager {
       }
    }
    /* Method to DELETE an employee from the records */
-   public void deleteEmployee(Integer EmployeeID){
+   public void deleteBug(Integer bugId){
       Session session = factory.openSession();
       Transaction tx = null;
       try{
