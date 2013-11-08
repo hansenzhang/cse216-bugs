@@ -31,6 +31,8 @@ public class UploadView extends javax.swing.JDialog {
 
     /**
      * Creates new form UploadView
+     * @param parent
+     * @param modal
      */
     public UploadView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -42,15 +44,12 @@ public class UploadView extends javax.swing.JDialog {
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), cancelName);
         ActionMap actionMap = getRootPane().getActionMap();
         actionMap.put(cancelName, new AbstractAction() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 doClose(RET_CANCEL);
             }
         });
-    }
-
-    UploadView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }    
 
     /**
      * @return the return status of this dialog - one of RET_OK or RET_CANCEL

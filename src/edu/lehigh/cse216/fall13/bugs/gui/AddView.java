@@ -285,7 +285,7 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
 
     private void uploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadButtonActionPerformed
         // TODO add your handling code here:
-        new UploadView().setVisible(true);
+        new UploadView(this, true).setVisible(true);
     }//GEN-LAST:event_uploadButtonActionPerformed
 
     /**
