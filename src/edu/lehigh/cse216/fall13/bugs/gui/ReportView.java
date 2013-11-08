@@ -35,10 +35,11 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
     public ReportView(JFrame parent, Bug b) {
         this.parent = parent;
                       
-        // We need this to attach any WindowListener events to this JFrame       
+             
         initComponents();
         // Remember that these need to be declared after we initialize our components
         // otherwise we will get null pointer exceptions.
+        // We need this to attach any WindowListener events to this JFrame  
         this.addWindowListener(this); 
         backButton.addActionListener(new ActionListener() {
 

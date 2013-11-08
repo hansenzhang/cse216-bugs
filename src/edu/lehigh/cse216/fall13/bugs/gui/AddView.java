@@ -31,10 +31,10 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
     public AddView(JFrame parent) {
         
         this.parent = parent;
-        
+                
+        initComponents();
         // We need this to attach any WindowListener events to this JFrame
         this.addWindowListener(this);
-        initComponents();
     }
 
     /**
