@@ -5,6 +5,8 @@
 package edu.lehigh.cse216.fall13.bugs.gui;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.JFrame;
@@ -32,10 +34,20 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
      */
     public ReportView(JFrame parent, Bug b) {
         this.parent = parent;
-        
-        // We need this to attach any WindowListener events to this JFrame
-        this.addWindowListener(this); 
+                      
+        // We need this to attach any WindowListener events to this JFrame       
         initComponents();
+        this.addWindowListener(this); 
+        backButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ee) {
+                ReportView.this.setVisible(false);
+                ReportView.this.dispose();
+                ReportView.this.parent.setVisible(true);
+            }
+
+        });
     }
 
     /**
@@ -50,7 +62,7 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
         jPanel1 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -63,10 +75,10 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
             }
         });
 
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -80,7 +92,7 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
                 .add(276, 276, 276))
             .add(jPanel1Layout.createSequentialGroup()
                 .add(21, 21, 21)
-                .add(jButton2)
+                .add(backButton)
                 .add(18, 18, 18)
                 .add(jButton1)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -91,7 +103,7 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
                 .add(26, 26, 26)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton1)
-                    .add(jButton2))
+                    .add(backButton))
                 .add(86, 86, 86)
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(216, Short.MAX_VALUE))
@@ -121,9 +133,9 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,8 +173,8 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
