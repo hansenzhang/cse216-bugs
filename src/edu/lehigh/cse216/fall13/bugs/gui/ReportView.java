@@ -32,6 +32,9 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
      */
     public ReportView(JFrame parent, Bug b) {
         this.parent = parent;
+        
+        // We need this to attach any WindowListener events to this JFrame
+        this.addWindowListener(this); 
         initComponents();
     }
 
@@ -105,13 +108,15 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
 
     @Override
     public void windowClosing(WindowEvent e) {
+        // on close, set parent to active frame
         parent.setVisible(true);
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // clean up our current frame
+        this.setVisible(false);
+        this.dispose();
     }
 
     @Override

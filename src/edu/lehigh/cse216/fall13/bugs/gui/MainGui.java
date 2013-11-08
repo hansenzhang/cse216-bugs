@@ -5,6 +5,8 @@
 package edu.lehigh.cse216.fall13.bugs.gui;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
+import edu.lehigh.cse216.fall13.bugs.database.DatabaseManager;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -12,11 +14,16 @@ import edu.lehigh.cse216.fall13.bugs.business.Bug;
  */
 public class MainGui extends javax.swing.JFrame {
 
+    private DefaultListModel listModel = new DefaultListModel();
+    
     /**
      * Creates new form EditView
      */
     public MainGui() {
         initComponents();
+        for (Bug b : DatabaseManager.instance.listBugs()) {
+            listModel.addElement(b);
+        }
     }
 
     /**
@@ -32,7 +39,7 @@ public class MainGui extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         addButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        bugList = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,17 +63,17 @@ public class MainGui extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        bugList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+        bugList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jList1MouseClicked(evt);
+                bugListMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(bugList);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,10 +118,10 @@ public class MainGui extends javax.swing.JFrame {
         new AddView(this).setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
 
-    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-        Bug b = (Bug) jList1.getSelectedValue();
+    private void bugListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bugListMouseClicked
+        Bug b = (Bug) bugList.getSelectedValue();
         new ReportView(this, b).setVisible(true);
-    }//GEN-LAST:event_jList1MouseClicked
+    }//GEN-LAST:event_bugListMouseClicked
 
     /**
      * @param args the command line arguments
@@ -152,8 +159,8 @@ public class MainGui extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JList bugList;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
