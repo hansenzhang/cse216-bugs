@@ -14,27 +14,54 @@ import java.util.ArrayList;
  */
 public class MainController {
     public static MainController instance;
+    
+    /**
+     * 
+     */
     MainController() {
         //default
     }
     
+    /**
+     * 
+     * @param b
+     * @return 
+     */
     public Bug add (Bug b) {        
         int bugId = DatabaseManager.instance.addBug(b);
         return view(bugId);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public ArrayList<Bug> list() {
         return DatabaseManager.instance.listBugs();        
     }
     
+    /**
+     * 
+     * @param bugId
+     * @return 
+     */
     public Bug view (int bugId) {
         return DatabaseManager.instance.getBug(bugId);
     }
     
+    /**
+     * 
+     * @param strings
+     * @return 
+     */
     public ArrayList<Bug> search(String... strings) {
         return null;
     }
     
+    /**
+     * 
+     * @param b 
+     */
     public void edit (Bug b) {
         DatabaseManager.instance.editBug(b);
         //TODO: return the correct bug to the gui.

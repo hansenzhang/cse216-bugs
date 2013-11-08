@@ -1,14 +1,16 @@
 package edu.lehigh.cse216.fall13.bugs.business;
 
 import java.util.Date;
-//import user, comment
 
 
 /**
  * 
+ * @author hansen
  */
 public class Bug{
-    
+    /**
+     * Local fields
+     */
     private int bugID;
     private Date date;
     private String version;
@@ -16,9 +18,16 @@ public class Bug{
     private String description;
     private String category;
 
+    /**
+     * Default constructor for testing
+     */
     public Bug() {
     }
     
+    /**
+     * Additional constructor for testing.
+     * @param id 
+     */
     public Bug (int id) {
         this.bugID = id;
     }

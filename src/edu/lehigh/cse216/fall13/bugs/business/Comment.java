@@ -18,7 +18,7 @@ public class Comment{
     
     /**
      * Constructor for the comment object
-     * Intansiates the bug ID, the user who created it, and the body of the comment
+     * Instantiates the bug ID, the user who created it, and the body of the comment
      * 
      * @param	bugID	int that stores the ID of the bug the comment is for
      * @param	user	User object that is the user that submitted the comment

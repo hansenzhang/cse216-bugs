@@ -16,11 +16,21 @@ import org.hibernate.Transaction;
  * @author hansen
  */
 public class DatabaseManager {
+    /**
+     * 
+     */
     private static SessionFactory factory; 
     
+    /**
+     * 
+     */
     public static DatabaseManager instance;
    
-    /* Method to CREATE a bug in the database */
+    /**
+     * Method to CREATE a bug in the database 
+     * @param b
+     * @return 
+     */
     public Integer addBug(Bug b) {
         Session session = factory.openSession();
         Transaction tx = null;
@@ -40,7 +50,11 @@ public class DatabaseManager {
         }
         return employeeID;
     }
-   /* Method to  READ all the employees */
+
+    /**
+     * Method to list all the bugs
+     * @return 
+     */
    public ArrayList<Bug> listBugs(){
       Session session = factory.openSession();
       Transaction tx = null;
@@ -68,7 +82,10 @@ public class DatabaseManager {
        return null;
    }
    
-   /* Method to UPDATE salary for an employee */
+   /**
+    * Method to UPDATE a bug
+    * @param b 
+    */
    public void editBug(Bug b){
       Session session = factory.openSession();
       Transaction tx = null;
@@ -86,7 +103,11 @@ public class DatabaseManager {
          session.close(); 
       }
    }
-   /* Method to DELETE an employee from the records */
+   
+   /**
+    * Method to DELETE a bug
+    * @param bugId 
+    */
    public void deleteBug(Integer bugId){
       Session session = factory.openSession();
       Transaction tx = null;
