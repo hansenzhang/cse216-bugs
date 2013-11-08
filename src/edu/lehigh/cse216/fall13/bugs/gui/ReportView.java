@@ -103,7 +103,6 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
 
     @Override
     public void windowOpened(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

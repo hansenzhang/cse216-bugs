@@ -16,7 +16,11 @@ public class Bug{
     private String description;
     private String category;
 
-    public Bug () {
+    public Bug() {
+    }
+    
+    public Bug (int id) {
+        this.bugID = id;
     }
     
     /**
@@ -100,6 +104,6 @@ public class Bug{
     @Override
     public String toString() {
         //This will need to be fixed to look nice in the Jlist
-        return "";
+        return "Test Bug " + bugID;
     }
 }

@@ -35,6 +35,10 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
         
         // We can't actually use this code yet because our database manager 
         // does not fetch correctly.
+        for (int i = 1; i< 6 ; i++){
+            listModel.addElement(new Bug(i)); //TODO: Refactor to tests
+        }
+        
         /*
         for (Bug b : DatabaseManager.instance.listBugs()) {
             listModel.addElement(b);
