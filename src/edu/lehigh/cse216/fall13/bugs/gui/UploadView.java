@@ -48,6 +48,10 @@ public class UploadView extends javax.swing.JDialog {
         });
     }
 
+    UploadView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * @return the return status of this dialog - one of RET_OK or RET_CANCEL
      */

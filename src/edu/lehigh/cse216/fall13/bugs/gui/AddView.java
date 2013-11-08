@@ -69,7 +69,7 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
         jTextField5 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        uploadButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Bug");
@@ -133,7 +133,12 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
 
         jLabel10.setText("Attachments:");
 
-        jButton1.setText("Upload");
+        uploadButton.setText("Upload");
+        uploadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadButtonActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -145,7 +150,7 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
                         .add(jLabel10)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jButton1)
+                        .add(uploadButton)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(submitButton)
                         .add(29, 29, 29))
@@ -236,7 +241,7 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel10)
-                            .add(jButton1))
+                            .add(uploadButton))
                         .add(20, 20, 20))))
         );
 
@@ -278,6 +283,11 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+    private void uploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadButtonActionPerformed
+        // TODO add your handling code here:
+        new UploadView().setVisible(true);
+    }//GEN-LAST:event_uploadButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -308,7 +318,6 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -332,6 +341,7 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
     private javax.swing.JTextField jTextField8;
     private javax.swing.JButton submitButton;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.JButton uploadButton;
     // End of variables declaration//GEN-END:variables
 
     @Override
