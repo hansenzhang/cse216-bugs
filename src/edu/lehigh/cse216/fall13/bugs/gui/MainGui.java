@@ -6,13 +6,18 @@ package edu.lehigh.cse216.fall13.bugs.gui;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
 import edu.lehigh.cse216.fall13.bugs.database.DatabaseManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author hansen
  */
-public class MainGui extends javax.swing.JFrame {
+public class MainGui extends javax.swing.JFrame implements WindowListener {
 
     private DefaultListModel listModel = new DefaultListModel();
     
@@ -21,9 +26,16 @@ public class MainGui extends javax.swing.JFrame {
      */
     public MainGui() {
         initComponents();
+        
+        // We can't actually use this code yet because our database manager 
+        // does not fetch correctly.
+        /*
         for (Bug b : DatabaseManager.instance.listBugs()) {
             listModel.addElement(b);
         }
+        */
+        quitButton.addActionListener(new ExitListener());
+        this.addWindowListener(this);
     }
 
     /**
@@ -40,8 +52,9 @@ public class MainGui extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         bugList = new javax.swing.JList();
+        quitButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -75,6 +88,8 @@ public class MainGui extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(bugList);
 
+        quitButton.setText("Quit");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,7 +99,10 @@ public class MainGui extends javax.swing.JFrame {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(addButton)
+                            .add(layout.createSequentialGroup()
+                                .add(addButton)
+                                .add(48, 48, 48)
+                                .add(quitButton))
                             .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 364, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -104,7 +122,9 @@ public class MainGui extends javax.swing.JFrame {
                         .add(0, 0, Short.MAX_VALUE)
                         .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
-                        .add(addButton)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(addButton)
+                            .add(quitButton))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 232, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .add(22, 22, 22))
@@ -163,5 +183,62 @@ public class MainGui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton quitButton;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        int confirm = JOptionPane.showConfirmDialog (null, 
+                                        "Are You Sure to Close this Application?",
+                                        "Exit Confirmation",JOptionPane.YES_NO_OPTION);           
+        if (confirm == JOptionPane.YES_OPTION) {                   
+            System.exit(0);
+            //TODO: check if we need to close our database connections
+        }
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {   
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+    }
+    
+    /**
+     * Class ExitListener check to see if the main program is being closed and 
+     * brings up a prompt for closing.
+     * @author hansen
+     *
+     */
+    private class ExitListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int confirm = JOptionPane.showConfirmDialog (null, 
+                                    "Are you sure you want to exit?",
+                                    "Exit Confirmation",JOptionPane.YES_NO_OPTION);           
+            if (confirm == JOptionPane.YES_OPTION) {
+                System.exit(0);
+                //TODO: check if we need to close our database connections
+            }
+        }
+        
+    }
+
 }
