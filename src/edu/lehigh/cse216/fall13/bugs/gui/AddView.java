@@ -6,13 +6,15 @@ package edu.lehigh.cse216.fall13.bugs.gui;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
 import edu.lehigh.cse216.fall13.bugs.controller.MainController;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 
 /**
  *
  * @author hansen
  */
-public class AddView extends javax.swing.JFrame {
+public class AddView extends javax.swing.JFrame implements WindowListener{
 
     private JFrame parent; // on close, set parent to active frame
     
@@ -26,6 +28,7 @@ public class AddView extends javax.swing.JFrame {
     
     public AddView(JFrame parent) {
         this.parent = parent;
+        this.addWindowListener(this);
         initComponents();
     }
 
@@ -48,7 +51,8 @@ public class AddView extends javax.swing.JFrame {
         submitButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Add Bug");
 
         jScrollPane1.setViewportView(jEditorPane1);
 
@@ -169,4 +173,42 @@ public class AddView extends javax.swing.JFrame {
     private javax.swing.JButton submitButton;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        parent.setVisible(true);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        this.setVisible(false);
+        this.dispose();
+//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
