@@ -96,4 +96,10 @@ public class Bug{
     public String getCategory(){
 	return category;
     }
+    
+    @Override
+    public String toString() {
+        //This will need to be fixed to look nice in the Jlist
+        return "";
+    }
 }
