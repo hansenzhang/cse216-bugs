@@ -17,7 +17,7 @@ import org.hibernate.Transaction;
  */
 public class DatabaseManager {
     /**
-     * 
+     * test comment!
      */
     private static SessionFactory factory; 
     
