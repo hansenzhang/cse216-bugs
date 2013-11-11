@@ -37,8 +37,23 @@ public class MainControllerTest {
     }
 
     @Test
-    public void testSomeMethod() {
+    public void addTest() {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
+    }
+    
+    @Test
+    public void listTest() {
+        fail("Don't know how to test this yet");
+    }
+        
+    @Test
+    public void editTest() {
+        fail("Don't know how to test this yet");
+    }
+    
+    @Test
+    public void searchTest() {
+        fail("search is not implemented");
     }
 }

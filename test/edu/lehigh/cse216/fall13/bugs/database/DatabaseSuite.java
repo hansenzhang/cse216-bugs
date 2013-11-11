@@ -6,8 +6,10 @@ package edu.lehigh.cse216.fall13.bugs.database;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -35,4 +37,8 @@ public class DatabaseSuite {
     public void tearDown() throws Exception {
     }
     
+    @Test
+    public void searchTest() {
+        fail("search is not implemented");
+    }
 }

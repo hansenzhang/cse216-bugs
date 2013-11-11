@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author hansen
  */
 public class MainController {
-    public static MainController instance;
+    public static MainController instance = new MainController();
     
     /**
      * 
@@ -27,7 +27,7 @@ public class MainController {
      * @param b
      * @return 
      */
-    public Bug add (Bug b) {        
+    public Bug add(Bug b) {        
         int bugId = DatabaseManager.instance.addBug(b);
         return view(bugId);
     }
@@ -45,7 +45,7 @@ public class MainController {
      * @param bugId
      * @return 
      */
-    public Bug view (int bugId) {
+    public Bug view(int bugId) {
         return DatabaseManager.instance.getBug(bugId);
     }
     
@@ -62,7 +62,7 @@ public class MainController {
      * 
      * @param b 
      */
-    public void edit (Bug b) {
+    public void edit(Bug b) {
         DatabaseManager.instance.editBug(b);
         //TODO: return the correct bug to the gui.
     }

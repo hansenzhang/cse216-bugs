@@ -55,7 +55,7 @@ public class DatabaseManager {
      * Method to list all the bugs
      * @return 
      */
-   public ArrayList<Bug> listBugs(){
+   public ArrayList<Bug> listBugs() {
       Session session = factory.openSession();
       Transaction tx = null;
       try{
