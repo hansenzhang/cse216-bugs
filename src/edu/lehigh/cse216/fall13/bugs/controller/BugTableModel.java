@@ -39,6 +39,20 @@ public class BugTableModel extends AbstractTableModel {
     public int getColumnCount() {
         return 5; // TODO: declare constant in bug?
     }
+    
+    @Override
+    public String getColumnName(int columnIndex) {
+        String name = "??";
+        switch (columnIndex) {
+            case 0 : name = "ID";  
+                break;
+            case 1 : name = "Description";
+                break;
+            default :
+                break;
+        }
+        return name;
+    }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {

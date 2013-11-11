@@ -62,6 +62,7 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
         jLabel1 = new javax.swing.JLabel();
         addButton = new javax.swing.JButton();
         quitButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
         bugTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -78,6 +79,7 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
         quitButton.setText("Quit");
 
         bugTable.setModel(new BugTableModel(bugList));
+        jScrollPane1.setViewportView(bugTable);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,13 +88,13 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
             .add(layout.createSequentialGroup()
                 .add(22, 22, 22)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(bugTable, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 382, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 326, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel1)
                     .add(layout.createSequentialGroup()
                         .add(addButton)
                         .add(48, 48, 48)
-                        .add(quitButton))
-                    .add(jLabel1))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .add(quitButton)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -103,9 +105,9 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(addButton)
                     .add(quitButton))
-                .add(33, 33, 33)
-                .add(bugTable, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 190, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .add(18, 18, 18)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 262, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -154,6 +156,7 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
     private javax.swing.JButton addButton;
     private javax.swing.JTable bugTable;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton quitButton;
     // End of variables declaration//GEN-END:variables
 
