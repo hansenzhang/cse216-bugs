@@ -19,14 +19,18 @@ public class BugTableModel extends AbstractTableModel {
     ArrayList<Bug> bugList;
 
     /**
-     *
+     * Default constructor to pull list of bugs from database.
      */
     public BugTableModel() {
         this.bugList = DatabaseManager.instance.listBugs();
     }
     
-    public BugTableModel(ArrayList<Bug> l) {
-        bugList = l;
+    /**
+     * Testing constructor to pull user generated list of bugs.
+     * @param list 
+     */
+    public BugTableModel(ArrayList<Bug> list) {
+        bugList = list;
     }
     
 
@@ -68,7 +72,6 @@ public class BugTableModel extends AbstractTableModel {
                 break;
         }
         return value;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
