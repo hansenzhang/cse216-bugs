@@ -51,6 +51,7 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
             }
 
         });
+        jLabel1.setText("Bug" + b.getID());
     }
 
     /**
@@ -66,6 +67,7 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
         jComboBox1 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -85,6 +87,8 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
             }
         });
 
+        jLabel1.setText("jLabel1");
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -95,9 +99,14 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
                 .add(276, 276, 276))
             .add(jPanel1Layout.createSequentialGroup()
                 .add(21, 21, 21)
-                .add(backButton)
-                .add(18, 18, 18)
-                .add(jButton1)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(6, 6, 6)
+                        .add(jLabel1))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(backButton)
+                        .add(18, 18, 18)
+                        .add(jButton1)))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -107,7 +116,9 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton1)
                     .add(backButton))
-                .add(86, 86, 86)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jLabel1)
+                .add(58, 58, 58)
                 .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(216, Short.MAX_VALUE))
         );
@@ -179,6 +190,7 @@ public class ReportView extends javax.swing.JFrame implements WindowListener {
     private javax.swing.JButton backButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 

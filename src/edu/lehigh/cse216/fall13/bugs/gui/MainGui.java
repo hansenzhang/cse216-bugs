@@ -57,6 +57,7 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
         bugTable.setAutoCreateColumnsFromModel(true);
         
         bugTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+       
         ListSelectionModel selectionModel = bugTable.getSelectionModel();
         selectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         // Attach our row listener to create a ReportView when clicked on.
@@ -113,13 +114,16 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
             .add(layout.createSequentialGroup()
                 .add(22, 22, 22)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 326, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel1)
                     .add(layout.createSequentialGroup()
                         .add(addButton)
                         .add(48, 48, 48)
                         .add(quitButton)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -130,9 +134,9 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(addButton)
                     .add(quitButton))
-                .add(18, 18, 18)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 262, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -271,7 +275,7 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
         public void valueChanged(ListSelectionEvent e) {
             if (!e.getValueIsAdjusting()) {
                 parent.setVisible(false);
-                // This should really fetch by bug id here.  Try using iterators.
+                
                 ListSelectionModel ls = parent.bugTable.getSelectionModel();
                 Bug b = (Bug) bugList.get(bugTable.convertRowIndexToModel(ls.getLeadSelectionIndex()));
                 
