@@ -22,11 +22,14 @@ public abstract class AbstractView extends javax.swing.JFrame implements WindowL
     private boolean isEdit;
     
     /**
+     * 
+     * the no arg constructor should really be used.
      * Creates new form AddView
      */
-    public AbstractView() {
+    private AbstractView() {
         
         initComponents();
+        this.addWindowListener(this);
     }
     
     public AbstractView(JFrame parent) {
@@ -38,13 +41,7 @@ public abstract class AbstractView extends javax.swing.JFrame implements WindowL
         this.addWindowListener(this);
     }
     
-    public AbstractView(JFrame parent, Bug b) {
-        //declare our frame as an edit view, this should be refactored if possible
-        //
-        
-        isEdit = true;
-        fillFields(b);        
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
