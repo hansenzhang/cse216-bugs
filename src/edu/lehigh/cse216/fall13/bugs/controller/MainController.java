@@ -26,6 +26,7 @@ public class MainController {
      * Create an exception here if needed;
      * 
      * @param b
+     * @param isEdit
      * @return 
      */
     public Bug add(Bug b, boolean isEdit) {
@@ -57,10 +58,14 @@ public class MainController {
     }
     
     /**
+     * Because default behavior of JTable allows us to sort, hopefully we'll
+     * be able to search there with more ease.
+     * @deprecated 
      * 
      * @param strings
      * @return 
      */
+    @Deprecated
     public ArrayList<Bug> search(String... strings) {
         return null;
     }
