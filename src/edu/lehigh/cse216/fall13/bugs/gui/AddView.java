@@ -57,27 +57,27 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
 
         titleLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        userTextField = new javax.swing.JTextField();
+        productTextField = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        userLabel = new javax.swing.JLabel();
+        productLabel = new javax.swing.JLabel();
+        versionLabel = new javax.swing.JLabel();
+        versionTextField = new javax.swing.JTextField();
+        osLabel = new javax.swing.JLabel();
+        jdkLabel = new javax.swing.JLabel();
+        severityLabel = new javax.swing.JLabel();
+        priorityLabel = new javax.swing.JLabel();
+        summaryLabel = new javax.swing.JLabel();
+        summaryTextField = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        descriptionTextArea = new javax.swing.JTextArea();
+        descriptionLabel = new javax.swing.JLabel();
+        osTextField = new javax.swing.JTextField();
+        jdkTextField = new javax.swing.JTextField();
+        severityTextField = new javax.swing.JTextField();
+        descriptionTextField = new javax.swing.JTextField();
+        attachmentsLabel = new javax.swing.JLabel();
         uploadButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -85,14 +85,14 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
 
         titleLabel.setText("Add Bug");
 
-        jTextField7.setText("jTextField7");
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        userTextField.setText("jTextField7");
+        userTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                userTextFieldActionPerformed(evt);
             }
         });
 
-        jTextField6.setText("jTextField6");
+        productTextField.setText("jTextField6");
 
         submitButton.setText("Submit");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -101,46 +101,46 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
             }
         });
 
-        jLabel1.setText("User:");
+        userLabel.setText("User:");
 
-        jLabel2.setText("Product:");
+        productLabel.setText("Product:");
 
-        jLabel3.setText("Version:");
+        versionLabel.setText("Version:");
 
-        jTextField1.setText("jTextField1");
+        versionTextField.setText("jTextField1");
 
-        jLabel4.setText("OS:");
+        osLabel.setText("OS:");
 
-        jLabel5.setText("JDK:");
+        jdkLabel.setText("JDK:");
 
-        jLabel6.setText("Severity:");
+        severityLabel.setText("Severity:");
 
-        jLabel7.setText("Priority: ");
+        priorityLabel.setText("Priority: ");
 
-        jLabel8.setText("Summary:");
+        summaryLabel.setText("Summary:");
 
-        jTextField2.setText("jTextField2");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        summaryTextField.setText("jTextField2");
+        summaryTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                summaryTextFieldActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        descriptionTextArea.setColumns(20);
+        descriptionTextArea.setRows(5);
+        jScrollPane2.setViewportView(descriptionTextArea);
 
-        jLabel9.setText("Description:");
+        descriptionLabel.setText("Description:");
 
-        jTextField3.setText("jTextField3");
+        osTextField.setText("jTextField3");
 
-        jTextField4.setText("jTextField4");
+        jdkTextField.setText("jTextField4");
 
-        jTextField5.setText("jTextField5");
+        severityTextField.setText("jTextField5");
 
-        jTextField8.setText("jTextField8");
+        descriptionTextField.setText("jTextField8");
 
-        jLabel10.setText("Attachments:");
+        attachmentsLabel.setText("Attachments:");
 
         uploadButton.setText("Upload");
         uploadButton.addActionListener(new java.awt.event.ActionListener() {
@@ -157,54 +157,54 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
                 .addContainerGap()
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .add(jLabel10)
+                        .add(attachmentsLabel)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(uploadButton)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(submitButton)
                         .add(29, 29, 29))
                     .add(jPanel2Layout.createSequentialGroup()
-                        .add(jLabel8)
+                        .add(summaryLabel)
                         .add(18, 18, 18)
-                        .add(jTextField2)
+                        .add(summaryTextField)
                         .add(2, 2, 2))
                     .add(jPanel2Layout.createSequentialGroup()
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jPanel2Layout.createSequentialGroup()
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(jPanel2Layout.createSequentialGroup()
-                                        .add(jLabel1)
+                                        .add(userLabel)
                                         .add(25, 25, 25)
-                                        .add(jTextField7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                        .add(userTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                                     .add(jPanel2Layout.createSequentialGroup()
-                                        .add(jLabel2)
+                                        .add(productLabel)
                                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                        .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                        .add(productTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                                     .add(jPanel2Layout.createSequentialGroup()
-                                        .add(jLabel3)
+                                        .add(versionLabel)
                                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 59, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                                        .add(versionTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 59, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                                 .add(86, 86, 86)
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(jPanel2Layout.createSequentialGroup()
-                                        .add(jLabel7)
+                                        .add(priorityLabel)
                                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                        .add(jTextField8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                        .add(descriptionTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                                     .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                                         .add(jPanel2Layout.createSequentialGroup()
-                                            .add(jLabel4)
+                                            .add(osLabel)
                                             .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                            .add(osTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                                         .add(jPanel2Layout.createSequentialGroup()
-                                            .add(jLabel5)
+                                            .add(jdkLabel)
                                             .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                            .add(jdkTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                                         .add(jPanel2Layout.createSequentialGroup()
-                                            .add(jLabel6)
+                                            .add(severityLabel)
                                             .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                            .add(jTextField5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
+                                            .add(severityTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
                             .add(jPanel2Layout.createSequentialGroup()
-                                .add(jLabel9)
+                                .add(descriptionLabel)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                                 .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 378, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(63, Short.MAX_VALUE))))
@@ -214,33 +214,33 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(jTextField7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel4)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(userLabel)
+                    .add(userTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(osLabel)
+                    .add(osTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(9, 9, 9)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel5)
-                    .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(productLabel)
+                    .add(productTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jdkLabel)
+                    .add(jdkTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel6)
-                    .add(jTextField5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(versionLabel)
+                    .add(versionTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(severityLabel)
+                    .add(severityTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel7)
-                    .add(jTextField8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(priorityLabel)
+                    .add(descriptionTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel8)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(summaryLabel)
+                    .add(summaryTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel9)
+                    .add(descriptionLabel)
                     .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 31, Short.MAX_VALUE)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -249,7 +249,7 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
                         .add(5, 5, 5))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel10)
+                            .add(attachmentsLabel)
                             .add(uploadButton))
                         .add(20, 20, 20))))
         );
@@ -284,13 +284,13 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
         MainController.instance.add(b, isEdit); // TODO: make this 
     }//GEN-LAST:event_submitButtonActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void userTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_userTextFieldActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void summaryTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summaryTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_summaryTextFieldActionPerformed
 
     private void uploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadButtonActionPerformed
         // TODO add your handling code here:
@@ -327,30 +327,30 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel attachmentsLabel;
+    private javax.swing.JLabel descriptionLabel;
+    private javax.swing.JTextArea descriptionTextArea;
+    private javax.swing.JTextField descriptionTextField;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JLabel jdkLabel;
+    private javax.swing.JTextField jdkTextField;
+    private javax.swing.JLabel osLabel;
+    private javax.swing.JTextField osTextField;
+    private javax.swing.JLabel priorityLabel;
+    private javax.swing.JLabel productLabel;
+    private javax.swing.JTextField productTextField;
+    private javax.swing.JLabel severityLabel;
+    private javax.swing.JTextField severityTextField;
     private javax.swing.JButton submitButton;
+    private javax.swing.JLabel summaryLabel;
+    private javax.swing.JTextField summaryTextField;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton uploadButton;
+    private javax.swing.JLabel userLabel;
+    private javax.swing.JTextField userTextField;
+    private javax.swing.JLabel versionLabel;
+    private javax.swing.JTextField versionTextField;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -391,6 +391,10 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
     
     }
 
+    /**
+     * 
+     * @param b 
+     */
     private void fillFields(Bug b) {
         
     }
