@@ -10,6 +10,6 @@ package edu.lehigh.cse216.fall13.bugs.database;
  *
  * @author hansen
  */
-public class Ec2Database {
+public class HerokuDatabase {
     // TODO: create ec2/rdb database first...
 }

@@ -237,7 +237,7 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
     /**
      * Class ExitListener check to see if the main program is being closed and
      * brings up a prompt for closing.
-     *
+     * Could be refactored into anonymous declaration.
      * @author hansen
      *
      */

@@ -19,6 +19,7 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
      * Capture the parent frame when moving between frames
      */
     private JFrame parent; 
+    private boolean isEdit;
     
     /**
      * Creates new form AddView
@@ -35,6 +36,14 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
         initComponents();
         // We need this to attach any WindowListener events to this JFrame
         this.addWindowListener(this);
+    }
+    
+    public AddView(JFrame parent, Bug b) {
+        //declare our frame as an edit view, this should be refactored if possible
+        //
+        
+        isEdit = true;
+        fillFields(b);
     }
 
     /**
@@ -272,7 +281,7 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         Bug b = new Bug();  //default constructor TODO: must change
-        MainController.instance.add(b);
+        MainController.instance.add(b); // TODO: make this 
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
@@ -380,5 +389,9 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
     @Override
     public void windowDeactivated(WindowEvent e) {
     
+    }
+
+    private void fillFields(Bug b) {
+        
     }
 }

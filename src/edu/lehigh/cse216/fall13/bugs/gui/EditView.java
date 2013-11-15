@@ -5,14 +5,18 @@
 package edu.lehigh.cse216.fall13.bugs.gui;
 
 /**
- *
+ * @deprecated 
+ * Don't use for now....
  * @author hansen
  */
+@Deprecated
 public class EditView extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
+     * @deprecated 
      */
+    @Deprecated
     public EditView() {
         initComponents();
     }
