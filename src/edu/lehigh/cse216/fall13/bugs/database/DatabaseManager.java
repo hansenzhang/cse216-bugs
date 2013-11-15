@@ -124,4 +124,23 @@ public class DatabaseManager {
          session.close(); 
       }
    }
-}
+   
+   /**
+    * Update an existing bug 
+    * @param b 
+    */
+   public void updateBug(Bug b) {
+       //add code here...
+       Session session = factory.openSession();
+       Transaction tx = null;
+       try {
+       
+       } catch (HibernateException e) {
+           if (tx != null)
+               tx.rollback();
+           e.printStackTrace();
+       } finally {
+           session.close();
+       }
+   }
+ }

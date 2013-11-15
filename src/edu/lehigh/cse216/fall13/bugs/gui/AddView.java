@@ -43,7 +43,7 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
         //
         
         isEdit = true;
-        fillFields(b);
+        fillFields(b);        
     }
 
     /**
@@ -281,7 +281,7 @@ public class AddView extends javax.swing.JFrame implements WindowListener{
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         Bug b = new Bug();  //default constructor TODO: must change
-        MainController.instance.add(b); // TODO: make this 
+        MainController.instance.add(b, isEdit); // TODO: make this 
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed

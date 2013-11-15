@@ -23,12 +23,19 @@ public class MainController {
     }
     
     /**
+     * Create an exception here if needed;
      * 
      * @param b
      * @return 
      */
-    public Bug add(Bug b) {        
+    public Bug add(Bug b, boolean isEdit) {
+        // TODO: we should check to see if the bug exists in the database already
+        // and append to it if needed.
+        if (isEdit) {            
+            DatabaseManager.instance.updateBug(b);           
+        }
         int bugId = DatabaseManager.instance.addBug(b);
+        
         return view(bugId);
     }
     
