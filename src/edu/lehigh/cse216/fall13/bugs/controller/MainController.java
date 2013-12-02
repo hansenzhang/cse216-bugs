@@ -18,8 +18,8 @@ public class MainController {
     /**
      * 
      */
-    MainController() {
-        //default
+    private MainController() {
+        //default constructor
     }
     
     /**
