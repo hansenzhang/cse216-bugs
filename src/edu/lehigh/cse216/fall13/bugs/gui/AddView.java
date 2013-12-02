@@ -14,6 +14,10 @@ import javax.swing.JFrame;
  */
 class AddView extends AbstractView{
 
+    /**
+     * 
+     * @param aThis 
+     */
     public AddView(JFrame aThis) {
         super(aThis);
     }

@@ -99,7 +99,7 @@ public class Bug{
     }
 
     public boolean isFixed(){
-	return false; //TODO: need to really not have this.
+	return fixed;
     }
 
     public String getDescription(){

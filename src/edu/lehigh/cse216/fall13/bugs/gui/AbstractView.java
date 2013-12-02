@@ -32,6 +32,10 @@ public abstract class AbstractView extends javax.swing.JFrame implements WindowL
         this.addWindowListener(this);
     }
     
+    /**
+     * 
+     * @param parent 
+     */
     public AbstractView(JFrame parent) {
         
         this.parent = parent;

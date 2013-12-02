@@ -15,7 +15,6 @@ import javax.swing.JFrame;
  */
 public class EditView extends AbstractView{
 
-   
     /**
      *
      * @param p

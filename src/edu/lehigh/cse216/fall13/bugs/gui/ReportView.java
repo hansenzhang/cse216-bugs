@@ -15,10 +15,7 @@ import javax.swing.JFrame;
  */
 public class ReportView extends AbstractView{
 
-    public ReportView(JFrame parent) {
-        super(parent);
-    }
-    
+   
     public ReportView(JFrame parent, Bug b) {
         super(parent);
         
