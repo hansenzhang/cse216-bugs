@@ -50,6 +50,10 @@ public class Bug{
 	this.description = description;
 	this.category = category;
     }
+    
+    public Bug(int bugID, Date date, String version, boolean fixed, String description, String category) {
+        
+    }
 
     /**
      * Used to update the version of the class
@@ -76,7 +80,6 @@ public class Bug{
     public void editDescription(String newDescription){
 	description = newDescription;
     }
-
 
     /**
      * Used to show the bug has been fixed

@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author hansen
+ * @author Group A
  */
 public abstract class AbstractView extends javax.swing.JFrame implements WindowListener{
     /**
@@ -22,8 +22,7 @@ public abstract class AbstractView extends javax.swing.JFrame implements WindowL
     private boolean isEdit;
     
     /**
-     * 
-     * the no arg constructor should really be used.
+     * The no arg constructor should really be used.
      * Creates new form AddView
      */
     private AbstractView() {
@@ -33,7 +32,7 @@ public abstract class AbstractView extends javax.swing.JFrame implements WindowL
     }
     
     /**
-     * 
+     * The parent constructor
      * @param parent 
      */
     public AbstractView(JFrame parent) {

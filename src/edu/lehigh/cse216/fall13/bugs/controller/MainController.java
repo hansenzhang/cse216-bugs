@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.lehigh.cse216.fall13.bugs.controller;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
@@ -10,20 +7,23 @@ import java.util.ArrayList;
 
 /**
  *
- * @author hansen
+ * @author Group A
  */
 public class MainController {
+    /**
+     * Global instance variable
+     */
     public static MainController instance = new MainController();
     
     /**
-     * 
+     * Default constructor
      */
     private MainController() {
-        //default constructor
+
     }
     
     /**
-     * Create an exception here if needed;
+     * Add bug takes a bug and adds it to the database.
      * 
      * @param b
      * @param isEdit
@@ -41,15 +41,17 @@ public class MainController {
     }
     
     /**
-     * 
+     * Method list fetches all the bugs from the database and returns it as an
+     * ArrayList. 
      * @return 
+     *      ArrayList that holds a list of all the bugs in the database.
      */
     public ArrayList<Bug> list() {
         return DatabaseManager.instance.listBugs();        
     }
     
     /**
-     * 
+     * Method view takes a bug id and returns the cooresponding bug object.
      * @param bugId
      * @return 
      */
@@ -58,21 +60,8 @@ public class MainController {
     }
     
     /**
-     * Because default behavior of JTable allows us to sort, hopefully we'll
-     * be able to search there with more ease.
-     * @deprecated 
-     * 
-     * @param strings
-     * @return 
-     */
-    @Deprecated
-    public ArrayList<Bug> search(String... strings) {
-        return null;
-    }
-    
-    /**
-     * 
-     * @param b 
+     * Edit takes a bug pushes the new version to the database.  
+     * @param b bug to be updated.
      */
     public void edit(Bug b) {
         DatabaseManager.instance.editBug(b);

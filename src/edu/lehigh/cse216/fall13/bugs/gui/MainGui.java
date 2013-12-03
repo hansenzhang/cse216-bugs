@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.lehigh.cse216.fall13.bugs.gui;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
@@ -19,7 +15,7 @@ import javax.swing.event.ListSelectionListener;
 
 /**
  *
- * @author hansen
+ * @author Group A
  */
 public class MainGui extends javax.swing.JFrame implements WindowListener {
 
@@ -202,10 +198,6 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
     public void windowOpened(WindowEvent e) {
     }
 
-    /**
-     * 
-     * @param e 
-     */
     @Override
     public void windowClosing(WindowEvent e) {
         int confirm = JOptionPane.showConfirmDialog(null,
@@ -247,7 +239,7 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
     private class ExitListener implements ActionListener {
 
         /**
-         * 
+         * Action performed looks to see if the programs quit.
          * @param e 
          */
         @Override
@@ -273,12 +265,12 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
     private class RowListener implements ListSelectionListener {
 
         /**
-         * 
+         * Reference to current 
          */
         MainGui parent;
 
         /**
-         * 
+         * Default constructor for rowlistener class.
          * @param m 
          */
         public RowListener(MainGui m) {
@@ -286,7 +278,8 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
         }
 
         /**
-         * 
+         * Method valueChanged checks to see which row is clicked on 
+         * for our JTable.
          * @param e 
          */
         @Override

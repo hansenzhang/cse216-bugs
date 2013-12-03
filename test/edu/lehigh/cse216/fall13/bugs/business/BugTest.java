@@ -14,15 +14,20 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author hansen
+ * @author Group A
  */
 public class BugTest {
+    Bug instance;
     
+    /**
+     * 
+     */
     public BugTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
+         
     }
     
     @AfterClass
@@ -31,6 +36,7 @@ public class BugTest {
     
     @Before
     public void setUp() {
+        instance = new Bug(1);
     }
     
     @After
@@ -43,7 +49,7 @@ public class BugTest {
     @Test
     public void testUpdateVersion() {
         System.out.println("updateVersion");
-        Bug instance = null;
+        
         instance.updateVersion();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -57,7 +63,6 @@ public class BugTest {
         System.out.println("addComment");
         User user = null;
         String msg = "";
-        Bug instance = null;
         instance.addComment(user, msg);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -70,7 +75,6 @@ public class BugTest {
     public void testEditDescription() {
         System.out.println("editDescription");
         String newDescription = "";
-        Bug instance = null;
         instance.editDescription(newDescription);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -82,7 +86,6 @@ public class BugTest {
     @Test
     public void testFixed() {
         System.out.println("fixed");
-        Bug instance = null;
         instance.fixed();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -94,7 +97,6 @@ public class BugTest {
     @Test
     public void testGetID() {
         System.out.println("getID");
-        Bug instance = null;
         int expResult = 0;
         int result = instance.getID();
         assertEquals(expResult, result);
@@ -108,7 +110,6 @@ public class BugTest {
     @Test
     public void testGetDate() {
         System.out.println("getDate");
-        Bug instance = null;
         Date expResult = null;
         Date result = instance.getDate();
         assertEquals(expResult, result);
@@ -122,7 +123,6 @@ public class BugTest {
     @Test
     public void testGetVersion() {
         System.out.println("getVersion");
-        Bug instance = null;
         String expResult = "";
         String result = instance.getVersion();
         assertEquals(expResult, result);
@@ -136,7 +136,6 @@ public class BugTest {
     @Test
     public void testIsFixed() {
         System.out.println("isFixed");
-        Bug instance = null;
         boolean expResult = false;
         boolean result = instance.isFixed();
         assertEquals(expResult, result);
@@ -150,7 +149,6 @@ public class BugTest {
     @Test
     public void testGetDescription() {
         System.out.println("getDescription");
-        Bug instance = null;
         String expResult = "";
         String result = instance.getDescription();
         assertEquals(expResult, result);
@@ -164,7 +162,6 @@ public class BugTest {
     @Test
     public void testGetCategory() {
         System.out.println("getCategory");
-        Bug instance = null;
         String expResult = "";
         String result = instance.getCategory();
         assertEquals(expResult, result);
