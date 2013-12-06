@@ -6,6 +6,7 @@ package edu.lehigh.cse216.fall13.bugs.gui;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
 import edu.lehigh.cse216.fall13.bugs.controller.MainController;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.JFrame;
@@ -14,36 +15,59 @@ import javax.swing.JFrame;
  *
  * @author Group A
  */
-public abstract class AbstractView extends javax.swing.JFrame implements WindowListener{
+public abstract class AbstractView extends javax.swing.JFrame {
+
     /**
      * Capture the parent frame when moving between frames
      */
-    private JFrame parent;
-    
+    private final JFrame parent;
+
     /**
-     * The no arg constructor should really be used.
-     * Creates new form AddView
+     * The no arg constructor should really be used. Creates new form AddView
      */
     private AbstractView() {
-        
+        parent = null; //removing warning...
         initComponents();
-        this.addWindowListener(AbstractView.this);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                // clean up our current frame
+                AbstractView.this.setVisible(false);
+                AbstractView.this.dispose();
+
+            }
+        });
     }
-    
+
     /**
      * The parent constructor
-     * @param parent 
+     *
+     * @param p
      */
-    public AbstractView(JFrame parent) {
-        
-        this.parent = parent;
-                
+    public AbstractView(JFrame p) {
+
+        this.parent = p;
+
         initComponents();
         // We need this to attach any WindowListener events to this JFrame
-        this.addWindowListener(AbstractView.this);
+        //this.addWindowListener(AbstractView.this);
+        
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // on close, set parent to active frame
+                parent.setVisible(true);
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                // clean up our current frame
+                AbstractView.this.setVisible(false);
+                AbstractView.this.dispose();
+
+            }
+        });
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -294,7 +318,6 @@ public abstract class AbstractView extends javax.swing.JFrame implements WindowL
     }//GEN-LAST:event_jdkTextFieldActionPerformed
 
 
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel attachmentsLabel;
     private javax.swing.JLabel descriptionLabel;
@@ -323,58 +346,20 @@ public abstract class AbstractView extends javax.swing.JFrame implements WindowL
     private javax.swing.JTextField versionTextField;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void windowOpened(WindowEvent e) {
-        
-    }
-
-    @Override
-    public void windowClosing(WindowEvent e) {
-        // on close, set parent to active frame
-        parent.setVisible(true);
-    }
-
-    @Override
-    public void windowClosed(WindowEvent e) {
-        // clean up our current frame
-        this.setVisible(false);
-        this.dispose();
-
-    }
-
-    @Override
-    public void windowIconified(WindowEvent e) {
-    }
-
-    @Override
-    public void windowDeiconified(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowActivated(WindowEvent e) {
-        
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {
-    
-    }
-
     /**
-     * 
-     * @param b 
+     *
+     * @param b
      */
     protected void fillFields(Bug b) {
-        
+
     }
-    
+
     /**
-     * 
-     * @param s 
+     *
+     * @param s
      */
     protected void setTitleText(String s) {
         titleLabel.setText(s);
     }
-    
+
 }

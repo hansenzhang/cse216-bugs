@@ -4,8 +4,8 @@ import edu.lehigh.cse216.fall13.bugs.business.Bug;
 import edu.lehigh.cse216.fall13.bugs.controller.BugTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -17,7 +17,7 @@ import javax.swing.event.ListSelectionListener;
  *
  * @author Group A
  */
-public class MainGui extends javax.swing.JFrame implements WindowListener {
+public class MainGui extends javax.swing.JFrame {
 
     /**
      * List model allows us to add any object type to our JList In our case we
@@ -43,20 +43,42 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
          listModel.addElement(b);
          }
          */
-        quitButton.addActionListener(new ExitListener());
-        this.addWindowListener(MainGui.this);
+        quitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(null,
+                        "Are you sure you want to exit?",
+                        "Exit Confirmation", JOptionPane.YES_NO_OPTION);
+                if (confirm == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                    //TODO: check if we need to close our database connections
+                }
+            }
+        });
+        
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(null,
+                        "Are You Sure to Close this Application?",
+                        "Exit Confirmation", JOptionPane.YES_NO_OPTION);
+                if (confirm == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                    //TODO: check if we need to close our database connections
+                }
+            }
+        });
 
         //consider having custom TableRowSorter, test deafult first!
-        bugTable.setAutoCreateRowSorter(true); 
+        bugTable.setAutoCreateRowSorter(true);
         bugTable.setAutoCreateColumnsFromModel(true);
-        
+
         bugTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-       
+
         ListSelectionModel selectionModel = bugTable.getSelectionModel();
         selectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         // Attach our row listener to create a ReportView when clicked on.
         selectionModel.addListSelectionListener(new RowListener(this));
-        
 
     }
 
@@ -195,107 +217,50 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
     private javax.swing.JButton quitButton;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void windowOpened(WindowEvent e) {
-    }
 
-    @Override
-    public void windowClosing(WindowEvent e) {
-        int confirm = JOptionPane.showConfirmDialog(null,
-                "Are You Sure to Close this Application?",
-                "Exit Confirmation", JOptionPane.YES_NO_OPTION);
-        if (confirm == JOptionPane.YES_OPTION) {
-            System.exit(0);
-            //TODO: check if we need to close our database connections
-        }
-    }
-
-    @Override
-    public void windowClosed(WindowEvent e) {
-    }
-
-    @Override
-    public void windowIconified(WindowEvent e) {
-    }
-
-    @Override
-    public void windowDeiconified(WindowEvent e) {
-    }
-
-    @Override
-    public void windowActivated(WindowEvent e) {
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {
-    }
-
-    /**
-     * Class ExitListener check to see if the main program is being closed and
-     * brings up a prompt for closing.
-     * Could be refactored into anonymous declaration.
-     * @author hansen
-     *
-     */
-    private class ExitListener implements ActionListener {
-
-        /**
-         * Action performed looks to see if the programs quit.
-         * @param e 
-         */
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            int confirm = JOptionPane.showConfirmDialog(null,
-                    "Are you sure you want to exit?",
-                    "Exit Confirmation", JOptionPane.YES_NO_OPTION);
-            if (confirm == JOptionPane.YES_OPTION) {
-                System.exit(0);
-                //TODO: check if we need to close our database connections
-            }
-        }
-
-    }
 
     /**
      * Class RowListener waits for a row to be clicked on and returns the
-     * corresponding bug.  This class is declared as inner instead of 
-     * anonymous because we need access to the parent frame.
-     * 
+     * corresponding bug. This class is declared as inner instead of anonymous
+     * because we need access to the parent frame.
+     *
      * @author hansen
      */
     private class RowListener implements ListSelectionListener {
 
         /**
-         * Reference to current 
+         * Reference to current
          */
         MainGui parent;
 
         /**
          * Default constructor for rowlistener class.
-         * @param m 
+         *
+         * @param m
          */
         public RowListener(MainGui m) {
             this.parent = m;
         }
 
         /**
-         * Method valueChanged checks to see which row is clicked on 
-         * for our JTable.
-         * @param e 
+         * Method valueChanged checks to see which row is clicked on for our
+         * JTable.
+         *
+         * @param e
          */
         @Override
         public void valueChanged(ListSelectionEvent e) {
-            ListSelectionModel ls = parent.bugTable.getSelectionModel();           
-            if (!e.getValueIsAdjusting() && !ls.isSelectionEmpty()){
-                parent.setVisible(false);                                              
+            ListSelectionModel ls = parent.bugTable.getSelectionModel();
+            if (!e.getValueIsAdjusting() && !ls.isSelectionEmpty()) {
+                parent.setVisible(false);
                 Bug b = (Bug) bugList.get(bugTable.convertRowIndexToModel(ls.getLeadSelectionIndex()));
-                
+
                 new ReportView(parent, b).setVisible(true);
-                
-                //We need to clear here in case we want to reorder.
+                // We need to clear here in case we want to reorder.
+                // Note that this calls this method again...
                 ls.clearSelection();
             }
-            
+
         }
     }
 
