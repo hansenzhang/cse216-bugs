@@ -18,7 +18,7 @@ public class ReportView extends AbstractView{
    
     public ReportView(JFrame parent, Bug b) {
         super(parent);
-        
+        titleLabel.setText("Bug " + b.getID());
     }
     
 }

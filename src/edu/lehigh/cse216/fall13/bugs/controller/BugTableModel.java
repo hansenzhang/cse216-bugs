@@ -6,7 +6,8 @@
 package edu.lehigh.cse216.fall13.bugs.controller;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
-import edu.lehigh.cse216.fall13.bugs.database.DatabaseManager;
+import edu.lehigh.cse216.fall13.persistence.dao.PersistenceFactory;
+import edu.lehigh.cse216.fall13.persistence.interfaces.IBugsAndIssues;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
@@ -15,14 +16,18 @@ import javax.swing.table.AbstractTableModel;
  * @author hansen
  */
 public class BugTableModel extends AbstractTableModel {
-
+    private static final int COLUMNS = 7;
     ArrayList<Bug> bugList;
 
     /**
      * Default constructor to pull list of bugs from database.
      */
     public BugTableModel() {
-        this.bugList = DatabaseManager.instance.listBugs();
+        // we can close this afterwards        
+        IBugsAndIssues dao = PersistenceFactory.create();
+        dao.load();
+        this.bugList = dao.listBugs(); 
+        //do we need to save here?
     }
     
     /**
@@ -41,7 +46,7 @@ public class BugTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 5; // TODO: declare constant in bug?
+        return COLUMNS;
     }
     
     @Override

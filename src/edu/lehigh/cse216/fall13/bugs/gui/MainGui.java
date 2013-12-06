@@ -44,7 +44,7 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
          }
          */
         quitButton.addActionListener(new ExitListener());
-        this.addWindowListener(this);
+        this.addWindowListener(MainGui.this);
 
         //consider having custom TableRowSorter, test deafult first!
         bugTable.setAutoCreateRowSorter(true); 
@@ -289,12 +289,13 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
                 
                 ListSelectionModel ls = parent.bugTable.getSelectionModel();
                 Bug b = (Bug) bugList.get(bugTable.convertRowIndexToModel(ls.getLeadSelectionIndex()));
-                
+                ls.clearSelection();
                 new ReportView(parent, b).setVisible(true);
                 
                 //We need to clear here in case we want to reorder.
-                ls.clearSelection();
+                
             }
+            
         }
     }
 

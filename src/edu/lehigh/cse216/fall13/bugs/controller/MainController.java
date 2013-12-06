@@ -2,7 +2,8 @@
 package edu.lehigh.cse216.fall13.bugs.controller;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
-import edu.lehigh.cse216.fall13.bugs.database.DatabaseManager;
+import edu.lehigh.cse216.fall13.persistence.dao.PersistenceFactory;
+import edu.lehigh.cse216.fall13.persistence.interfaces.IBugsAndIssues;
 import java.util.ArrayList;
 
 /**
@@ -15,27 +16,27 @@ public class MainController {
      */
     public static MainController instance = new MainController();
     
+    private IBugsAndIssues dao;
+    
     /**
      * Default constructor
      */
     private MainController() {
-
+        dao = PersistenceFactory.create();
     }
     
     /**
      * Add bug takes a bug and adds it to the database.
      * 
      * @param b
-     * @param isEdit
      * @return 
      */
-    public Bug add(Bug b, boolean isEdit) {
+    public Bug add(Bug b) {
         // TODO: we should check to see if the bug exists in the database already
         // and append to it if needed.
-        if (isEdit) {
-            DatabaseManager.instance.updateBug(b);           
-        }
-        int bugId = DatabaseManager.instance.addBug(b);
+        int bugId;
+        dao.load();        
+        bugId = dao.addBug(b);
         
         return view(bugId);
     }
@@ -47,7 +48,10 @@ public class MainController {
      *      ArrayList that holds a list of all the bugs in the database.
      */
     public ArrayList<Bug> list() {
-        return DatabaseManager.instance.listBugs();        
+        dao.load();
+        ArrayList<Bug> o = dao.listBugs();        
+        dao.save();
+        return o;
     }
     
     /**
@@ -56,15 +60,21 @@ public class MainController {
      * @return 
      */
     public Bug view(int bugId) {
-        return DatabaseManager.instance.getBug(bugId);
+        dao.load();
+        //Bug b = dao.getBug(bugId);
+        dao.save();
+        //return b;
+        return null;
     }
     
     /**
      * Edit takes a bug pushes the new version to the database.  
      * @param b bug to be updated.
      */
-    public void edit(Bug b) {
-        DatabaseManager.instance.editBug(b);
-        //TODO: return the correct bug to the gui.
+    public Bug edit(int bugId) {
+        dao.load();
+        dao.editBug(view(bugId));
+        dao.save();
+        return view(bugId);
     }
 }

@@ -7,7 +7,7 @@ import java.util.Date;
  * 
  * @author hansen
  */
-public class Bug{
+public class Bug implements java.io.Serializable {
     /**
      * Local fields
      */
