@@ -56,6 +56,7 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
         selectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         // Attach our row listener to create a ReportView when clicked on.
         selectionModel.addListSelectionListener(new RowListener(this));
+        
 
     }
 
@@ -284,16 +285,15 @@ public class MainGui extends javax.swing.JFrame implements WindowListener {
          */
         @Override
         public void valueChanged(ListSelectionEvent e) {
-            if (!e.getValueIsAdjusting()) {
-                parent.setVisible(false);
-                
-                ListSelectionModel ls = parent.bugTable.getSelectionModel();
+            ListSelectionModel ls = parent.bugTable.getSelectionModel();           
+            if (!e.getValueIsAdjusting() && !ls.isSelectionEmpty()){
+                parent.setVisible(false);                                              
                 Bug b = (Bug) bugList.get(bugTable.convertRowIndexToModel(ls.getLeadSelectionIndex()));
-                ls.clearSelection();
+                
                 new ReportView(parent, b).setVisible(true);
                 
                 //We need to clear here in case we want to reorder.
-                
+                ls.clearSelection();
             }
             
         }
