@@ -22,7 +22,7 @@ public abstract class AbstractView extends javax.swing.JFrame {
     private MainGui sudoParent;
 
     /**
-     * The no arg constructor should really be used. Creates new form AddView
+     * The no arg constructor should be used for ONLY testing. Creates new form AddView
      */
     public AbstractView() {
         parent = null; //removing warning...
@@ -373,4 +373,11 @@ public abstract class AbstractView extends javax.swing.JFrame {
         return b;
     }
 
+    protected void hideEditButton() {
+        editButton.setVisible(false);
+    }
+    
+    protected void hideRemoveButton() {
+        removeButton.setVisible(false);
+    }
 }

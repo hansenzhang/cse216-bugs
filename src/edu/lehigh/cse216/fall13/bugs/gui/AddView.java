@@ -6,11 +6,9 @@
 
 package edu.lehigh.cse216.fall13.bugs.gui;
 
-import javax.swing.JFrame;
-
 /**
  *
- * @author hansen
+ * @author Group A
  */
 class AddView extends AbstractView{
 
@@ -27,6 +25,8 @@ class AddView extends AbstractView{
         super(aThis);
         titleLabel.setText("Add New Bug");
         setTitle("Add Bug");
+        hideEditButton();
+        hideRemoveButton();
     }
     
 }

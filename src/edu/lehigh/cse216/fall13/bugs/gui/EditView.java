@@ -10,7 +10,7 @@ import edu.lehigh.cse216.fall13.bugs.business.Bug;
 
 /**
  *
- * @author hansen
+ * @author Group A
  */
 public class EditView extends AbstractView{
 
@@ -27,5 +27,7 @@ public class EditView extends AbstractView{
         super(p);
         titleLabel.setText("Editing Bug " + b.getID().toString());
         setTitle("Edit Bug");
+        
+        hideEditButton();
     }
 }

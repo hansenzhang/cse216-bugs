@@ -10,7 +10,7 @@ import edu.lehigh.cse216.fall13.bugs.business.Bug;
 
 /**
  *
- * @author hansen
+ * @author Group A
  */
 public class ReportView extends AbstractView{
 
@@ -23,6 +23,7 @@ public class ReportView extends AbstractView{
         fillFields(b);
         titleLabel.setText("Bug " + b.getID().toString());
         setTitle("View Bug");
+        
     }
     
 }
