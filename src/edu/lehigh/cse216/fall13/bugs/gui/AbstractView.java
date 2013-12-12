@@ -286,7 +286,9 @@ public abstract class AbstractView extends javax.swing.JFrame {
             Bug b = fetchFields();
             b.setBugId(currentBug.getBugID());
             parent.model.add(b);
-            
+            new ReportView(parent, b).setVisible(true);
+            this.setVisible(false);
+            this.dispose();
         } else {        
         Bug b = fetchFields();
         parent.model.add(b);
