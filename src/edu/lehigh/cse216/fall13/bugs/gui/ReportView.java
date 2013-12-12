@@ -14,13 +14,16 @@ import edu.lehigh.cse216.fall13.bugs.business.Bug;
  */
 public class ReportView extends AbstractView{
 
-   public ReportView() {      
+   public ReportView() {   
+       type = ViewType.REPORT;
    }
     
-    public ReportView(MainGui parent, Bug b) {
+    public ReportView(MainGui parent, Bug b) {        
         super(parent);
-        setFieldsImmutable(true);
+        type = ViewType.REPORT;
+        setFieldsImmutable(false);
         fillFields(b);
+        currentBug = b;
         titleLabel.setText("Bug " + b.getID().toString());
         setTitle("View Bug");
         

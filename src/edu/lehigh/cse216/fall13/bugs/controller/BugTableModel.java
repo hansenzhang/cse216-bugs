@@ -9,6 +9,7 @@ import edu.lehigh.cse216.fall13.bugs.business.Bug;
 import edu.lehigh.cse216.fall13.persistence.dao.PersistenceFactory;
 import edu.lehigh.cse216.fall13.persistence.interfaces.IBugsAndIssues;
 import java.util.ArrayList;
+import java.util.UUID;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -28,7 +29,6 @@ public class BugTableModel extends AbstractTableModel {
         IBugsAndIssues dao = PersistenceFactory.create();
         dao.load();
         this.bugList = dao.listBugs();
-        //do we need to save here?
     }
 
     /**
@@ -118,6 +118,10 @@ public class BugTableModel extends AbstractTableModel {
         bugList = MainController.instance.list();
         fireTableDataChanged();
     }
-            
 
+    public void remove(UUID bugID) {
+        MainController.instance.remove(bugID);
+        bugList = MainController.instance.list();
+        fireTableDataChanged();        
+    }
 }

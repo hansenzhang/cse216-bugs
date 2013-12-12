@@ -64,18 +64,24 @@ public class MainController {
         dao.load();
         Bug b = dao.getBug(bugId);
         dao.save();
-        //return b;
-        return null;
+        return b;
     }
     
     /**
      * Edit takes a bug pushes the new version to the database.  
-     * @param b bug to be updated.
+     * @param bugId
+     * @return 
      */
     public Bug edit(UUID bugId) {
         dao.load();
         dao.editBug(view(bugId));
         dao.save();
         return view(bugId);
+    }
+    
+    public void remove(UUID bugId) {
+        dao.load();
+        dao.deleteBug(bugId);
+        dao.save();
     }
 }

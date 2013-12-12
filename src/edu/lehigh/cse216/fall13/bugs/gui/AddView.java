@@ -14,7 +14,7 @@ class AddView extends AbstractView{
 
     
     public AddView() {
-    
+        type = ViewType.ADD;
     }
     
     /**
@@ -23,6 +23,7 @@ class AddView extends AbstractView{
      */
     public AddView(MainGui aThis) {
         super(aThis);
+        type = ViewType.ADD;
         titleLabel.setText("Add New Bug");
         setTitle("Add Bug");
         hideEditButton();

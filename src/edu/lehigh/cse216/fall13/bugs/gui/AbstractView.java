@@ -8,23 +8,27 @@ import edu.lehigh.cse216.fall13.bugs.business.Bug;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Group A
  */
 public abstract class AbstractView extends javax.swing.JFrame {
-
+    public enum ViewType {
+        ABSTRACT, REPORT, ADD, EDIT
+    }
     /**
      * Capture the parent frame when moving between frames
      */
-    private final JFrame parent;
-    private MainGui sudoParent;
-
+    private MainGui parent;
+    protected Bug currentBug;
+    protected ViewType type; 
     /**
      * The no arg constructor should be used for ONLY testing. Creates new form AddView
      */
     public AbstractView() {
+        type = ViewType.ABSTRACT;
         parent = null; //removing warning...
         initComponents();
         this.addWindowListener(new WindowAdapter() {
@@ -44,7 +48,7 @@ public abstract class AbstractView extends javax.swing.JFrame {
      * @param p
      */
     public AbstractView(MainGui p) {
-        this.sudoParent = p;
+        type = ViewType.ABSTRACT;
         this.parent = p;
 
         initComponents();
@@ -109,12 +113,6 @@ public abstract class AbstractView extends javax.swing.JFrame {
 
         titleLabel.setText("ABSTRACT");
 
-        userTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userTextFieldActionPerformed(evt);
-            }
-        });
-
         submitButton.setText("Submit");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,27 +136,25 @@ public abstract class AbstractView extends javax.swing.JFrame {
 
         summaryLabel.setText("Summary:");
 
-        summaryTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                summaryTextFieldActionPerformed(evt);
-            }
-        });
-
         descriptionTextArea.setColumns(20);
         descriptionTextArea.setRows(5);
         jScrollPane2.setViewportView(descriptionTextArea);
 
         descriptionLabel.setText("Description:");
 
-        jdkTextField.addActionListener(new java.awt.event.ActionListener() {
+        editButton.setText("Edit");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jdkTextFieldActionPerformed(evt);
+                editButtonActionPerformed(evt);
             }
         });
 
-        editButton.setText("Edit");
-
         removeButton.setText("Remove");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -285,25 +281,38 @@ public abstract class AbstractView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jdkTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdkTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jdkTextFieldActionPerformed
-
-    private void summaryTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summaryTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_summaryTextFieldActionPerformed
-
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        if (type == ViewType.EDIT) {
+            Bug b = fetchFields();
+            b.setBugId(currentBug.getBugID());
+            parent.model.add(b);
+            
+        } else {        
         Bug b = fetchFields();
-        sudoParent.model.add(b);
-        new ReportView(sudoParent, b).setVisible(true);
+        parent.model.add(b);
+        new ReportView(parent, b).setVisible(true);
         this.setVisible(false);
         this.dispose();
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
-    private void userTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userTextFieldActionPerformed
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        int confirm = JOptionPane.showConfirmDialog(null,
+                        "Are you sure?",
+                        "Remove", JOptionPane.YES_NO_OPTION);
+                if (confirm == JOptionPane.YES_OPTION) {
+                    parent.model.remove(currentBug.getID());
+                    parent.setVisible(true);
+                    this.setVisible(false);
+                    this.dispose();
+                }
+    }//GEN-LAST:event_removeButtonActionPerformed
+
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        new EditView(parent, currentBug).setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_editButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -358,7 +367,15 @@ public abstract class AbstractView extends javax.swing.JFrame {
     }
     
     protected void setFieldsImmutable(boolean isEdit) {
-    
+        descriptionTextArea.setEditable(isEdit);
+        jdkTextField.setEditable(isEdit);
+        osTextField.setEditable(isEdit);
+        priorityTextField.setEditable(isEdit);
+        productTextField.setEditable(isEdit);        
+        severityTextField.setEditable(isEdit);
+        summaryTextField.setEditable(isEdit);
+        userTextField.setEditable(isEdit);
+        versionTextField.setEditable(isEdit);
     }
 
     private Bug fetchFields() {

@@ -15,7 +15,7 @@ import edu.lehigh.cse216.fall13.bugs.business.Bug;
 public class EditView extends AbstractView{
 
     public EditView() {
-    
+        type = ViewType.EDIT;
     }
     
     /**
@@ -24,10 +24,12 @@ public class EditView extends AbstractView{
      * @param b
      */
     public EditView(MainGui p, Bug b) {
-        super(p);
+        super(p);        
+        type = ViewType.EDIT;
         titleLabel.setText("Editing Bug " + b.getID().toString());
         setTitle("Edit Bug");
         
         hideEditButton();
     }
+      
 }

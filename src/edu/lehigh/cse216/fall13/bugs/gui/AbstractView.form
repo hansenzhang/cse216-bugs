@@ -188,9 +188,6 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="userTextField">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userTextFieldActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="productTextField">
         </Component>
@@ -245,9 +242,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="summaryTextField">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="summaryTextFieldActionPerformed"/>
-          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
           <AuxValues>
@@ -272,9 +266,6 @@
         <Component class="javax.swing.JTextField" name="osTextField">
         </Component>
         <Component class="javax.swing.JTextField" name="jdkTextField">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jdkTextFieldActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="severityTextField">
         </Component>
@@ -284,11 +275,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Edit"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="removeButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Remove"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

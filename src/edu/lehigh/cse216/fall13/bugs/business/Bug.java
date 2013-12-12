@@ -159,4 +159,8 @@ public class Bug implements java.io.Serializable {
         //This will need to be fixed to look nice in the Jlist
         return "Test Bug " + bugID;
     }
+
+    public void setBugId(UUID bugID) {
+        this.bugID = bugID;
+    }
 }
