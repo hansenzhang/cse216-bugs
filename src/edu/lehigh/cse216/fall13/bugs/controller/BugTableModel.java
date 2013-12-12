@@ -14,7 +14,7 @@ public class BugTableModel extends AbstractTableModel {
     /**
      * This is a constant for our table.
      */
-    private static final int COLUMNS = 7;
+    public static final int COLUMNS = 7;
     public ArrayList<Bug> bugList;
 
     /**
