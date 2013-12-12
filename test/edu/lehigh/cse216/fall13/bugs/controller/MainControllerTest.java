@@ -1,9 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.lehigh.cse216.fall13.bugs.controller;
 
+import edu.lehigh.cse216.fall13.bugs.business.Bug;
+import java.util.ArrayList;
+import java.util.UUID;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,10 +12,11 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author hansen
+ * @author Group A
  */
 public class MainControllerTest {
-    
+    Bug b;
+    ArrayList<UUID> removeIds = new ArrayList();
     public MainControllerTest() {
     }
     
@@ -30,30 +30,63 @@ public class MainControllerTest {
     
     @Before
     public void setUp() {
+        b = new Bug(
+                "Description test", "JDK test", "OS test", "Priority test",
+                "Product test", "Severity test", "Summary test", "User test",
+                "Version test"
+        );
     }
     
     @After
     public void tearDown() {
+        for (UUID id : removeIds) {
+            MainController.instance.remove(id);
+        }
     }
 
+    /**
+     * Test of add method, of class MainController.
+     */
     @Test
-    public void addTest() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAdd() {
+        System.out.println("add");
+        Bug result = MainController.instance.add(b);
+        assertEquals(b.getBugID(), result.getBugID());
+        removeIds.add(result.getBugID());
+    }
+
+    /**
+     * Test of list method, of class MainController.
+     */
+    @Test
+    public void testList() {
+        System.out.println("list");        
+        ArrayList<Bug> expResult = MainController.instance.list();
+        assertTrue(expResult instanceof ArrayList);
+    }
+
+    /**
+     * Test of view method, of class MainController.
+     */
+    @Test
+    public void testView() {
+        System.out.println("view");
+        Bug addResult = MainController.instance.add(b);
+        Bug viewResult = MainController.instance.view(addResult.getBugID());
+        assertEquals(addResult.getBugID(), viewResult.getBugID());
+        removeIds.add(addResult.getBugID());
+    }
+
+    /**
+     * Test of remove method, of class MainController.
+     */
+    @Test
+    public void testRemove() {
+        System.out.println("remove");
+        Bug addResult = MainController.instance.add(b);
+        MainController.instance.remove(addResult.getBugID());
+        Bug result = MainController.instance.view(addResult.getBugID());
+        assertEquals(result, null);
     }
     
-    @Test
-    public void listTest() {
-        fail("Don't know how to test this yet");
-    }
-        
-    @Test
-    public void editTest() {
-        fail("Don't know how to test this yet");
-    }
-    
-    @Test
-    public void searchTest() {
-        fail("search is not implemented");
-    }
 }

@@ -67,18 +67,6 @@ public class MainController {
     }
     
     /**
-     * Edit takes a bug pushes the new version to the database.  
-     * @param bugId
-     * @return 
-     */
-    public Bug edit(UUID bugId) {
-        dao.load();
-        dao.editBug(view(bugId));
-        dao.save();
-        return view(bugId);
-    }
-    
-    /**
      * Remove takes a unique identifier and removes the cooresponding bug from
      * the database.
      * @param bugId 
