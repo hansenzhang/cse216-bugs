@@ -6,7 +6,7 @@ import java.util.UUID;
 
 /**
  * 
- * @author hansen
+ * @author Group A
  */
 public class Bug implements java.io.Serializable {
     private static final long serialVersionUID = 1L;

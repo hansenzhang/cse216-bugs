@@ -1,4 +1,3 @@
-
 package edu.lehigh.cse216.fall13.bugs.controller;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;

@@ -15,7 +15,6 @@ public abstract class AbstractView extends javax.swing.JFrame {
      * Enum ViewType allows us to distinguish the difference for submit buttons.
      */
     public enum ViewType {
-
         ABSTRACT, REPORT, ADD, EDIT
     }
 
@@ -52,7 +51,6 @@ public abstract class AbstractView extends javax.swing.JFrame {
     public AbstractView(MainGui p) {
         type = ViewType.ABSTRACT;
         this.parent = p;
-
         initComponents();
 
         // anonymous declaration of window listener to have custom window actions.

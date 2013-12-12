@@ -1,8 +1,6 @@
 package edu.lehigh.cse216.fall13.bugs.controller;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
-import edu.lehigh.cse216.fall13.persistence.dao.PersistenceFactory;
-import edu.lehigh.cse216.fall13.persistence.interfaces.IBugsAndIssues;
 import java.util.ArrayList;
 import java.util.UUID;
 import javax.swing.table.AbstractTableModel;
