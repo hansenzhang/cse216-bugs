@@ -5,10 +5,8 @@
 package edu.lehigh.cse216.fall13.bugs.gui;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
-import edu.lehigh.cse216.fall13.bugs.controller.MainController;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 
 /**
@@ -21,11 +19,12 @@ public abstract class AbstractView extends javax.swing.JFrame {
      * Capture the parent frame when moving between frames
      */
     private final JFrame parent;
+    private MainGui sudoParent;
 
     /**
      * The no arg constructor should really be used. Creates new form AddView
      */
-    private AbstractView() {
+    public AbstractView() {
         parent = null; //removing warning...
         initComponents();
         this.addWindowListener(new WindowAdapter() {
@@ -44,8 +43,8 @@ public abstract class AbstractView extends javax.swing.JFrame {
      *
      * @param p
      */
-    public AbstractView(JFrame p) {
-
+    public AbstractView(MainGui p) {
+        this.sudoParent = p;
         this.parent = p;
 
         initComponents();
@@ -56,6 +55,8 @@ public abstract class AbstractView extends javax.swing.JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 // on close, set parent to active frame
+                parent.revalidate();
+                parent.repaint();
                 parent.setVisible(true);
             }
 
@@ -99,13 +100,12 @@ public abstract class AbstractView extends javax.swing.JFrame {
         osTextField = new javax.swing.JTextField();
         jdkTextField = new javax.swing.JTextField();
         severityTextField = new javax.swing.JTextField();
-        descriptionTextField = new javax.swing.JTextField();
-        attachmentsLabel = new javax.swing.JLabel();
-        uploadButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        priorityTextField = new javax.swing.JTextField();
+        editButton = new javax.swing.JButton();
+        removeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Add Bug");
+        setTitle("ABSTRACT");
 
         titleLabel.setText("ABSTRACT");
 
@@ -156,16 +156,9 @@ public abstract class AbstractView extends javax.swing.JFrame {
             }
         });
 
-        attachmentsLabel.setText("Attachments:");
+        editButton.setText("Edit");
 
-        uploadButton.setText("Upload");
-        uploadButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                uploadButtonActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Edit");
+        removeButton.setText("Remove");
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -200,15 +193,13 @@ public abstract class AbstractView extends javax.swing.JFrame {
                                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
                                         .add(priorityLabel)
                                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                        .add(descriptionTextField))
+                                        .add(priorityTextField))
                                     .add(jPanel2Layout.createSequentialGroup()
                                         .add(jdkLabel)
                                         .add(39, 39, 39)
                                         .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                                             .add(severityTextField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                                            .add(jdkTextField))))
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(jButton1))
+                                            .add(jdkTextField)))))
                             .add(jPanel2Layout.createSequentialGroup()
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(descriptionLabel)
@@ -216,14 +207,14 @@ public abstract class AbstractView extends javax.swing.JFrame {
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                                     .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
-                                    .add(summaryTextField))
-                                .add(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
+                                    .add(summaryTextField))))
+                        .addContainerGap(77, Short.MAX_VALUE))
                     .add(jPanel2Layout.createSequentialGroup()
-                        .add(attachmentsLabel)
+                        .add(19, 19, 19)
+                        .add(editButton)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(uploadButton)
-                        .add(241, 241, 241)
+                        .add(removeButton)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(submitButton)
                         .add(37, 37, 37))))
         );
@@ -235,9 +226,8 @@ public abstract class AbstractView extends javax.swing.JFrame {
                     .add(userLabel)
                     .add(userTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(osLabel)
-                    .add(osTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButton1))
-                .add(7, 7, 7)
+                    .add(osTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(9, 9, 9)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(productLabel)
                     .add(productTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -252,7 +242,7 @@ public abstract class AbstractView extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(priorityLabel)
-                    .add(descriptionTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(priorityTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(summaryLabel)
@@ -263,9 +253,9 @@ public abstract class AbstractView extends javax.swing.JFrame {
                     .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 41, Short.MAX_VALUE)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(attachmentsLabel)
-                    .add(uploadButton)
-                    .add(submitButton))
+                    .add(submitButton)
+                    .add(editButton)
+                    .add(removeButton))
                 .add(20, 20, 20))
         );
 
@@ -295,35 +285,31 @@ public abstract class AbstractView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jdkTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdkTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jdkTextFieldActionPerformed
+
+    private void summaryTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summaryTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_summaryTextFieldActionPerformed
+
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        Bug b = new Bug();
-        MainController.instance.add(b);
+        Bug b = fetchFields();
+        sudoParent.model.add(b);
+        new ReportView(sudoParent, b).setVisible(true);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void userTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_userTextFieldActionPerformed
 
-    private void summaryTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summaryTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_summaryTextFieldActionPerformed
-
-    private void uploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadButtonActionPerformed
-        // TODO add your handling code here:
-        new UploadView(this, true).setVisible(true);
-    }//GEN-LAST:event_uploadButtonActionPerformed
-
-    private void jdkTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdkTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jdkTextFieldActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel attachmentsLabel;
     private javax.swing.JLabel descriptionLabel;
     private javax.swing.JTextArea descriptionTextArea;
-    private javax.swing.JTextField descriptionTextField;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton editButton;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel jdkLabel;
@@ -331,15 +317,16 @@ public abstract class AbstractView extends javax.swing.JFrame {
     private javax.swing.JLabel osLabel;
     private javax.swing.JTextField osTextField;
     private javax.swing.JLabel priorityLabel;
+    private javax.swing.JTextField priorityTextField;
     private javax.swing.JLabel productLabel;
     private javax.swing.JTextField productTextField;
+    private javax.swing.JButton removeButton;
     private javax.swing.JLabel severityLabel;
     private javax.swing.JTextField severityTextField;
     private javax.swing.JButton submitButton;
     private javax.swing.JLabel summaryLabel;
     private javax.swing.JTextField summaryTextField;
     protected javax.swing.JLabel titleLabel;
-    private javax.swing.JButton uploadButton;
     private javax.swing.JLabel userLabel;
     private javax.swing.JTextField userTextField;
     private javax.swing.JLabel versionLabel;
@@ -351,7 +338,15 @@ public abstract class AbstractView extends javax.swing.JFrame {
      * @param b
      */
     protected void fillFields(Bug b) {
-
+        descriptionTextArea.setText(b.getDescription());
+        jdkTextField.setText(b.getJdk());
+        osTextField.setText(b.getOs());
+        priorityTextField.setText(b.getPriority());
+        productTextField.setText(b.getProduct());        
+        severityTextField.setText(b.getSeverity());
+        summaryTextField.setText(b.getSummary());
+        userTextField.setText(b.getUser());
+        versionTextField.setText(b.getVersion());
     }
 
     /**
@@ -360,6 +355,22 @@ public abstract class AbstractView extends javax.swing.JFrame {
      */
     protected void setTitleText(String s) {
         titleLabel.setText(s);
+    }
+    
+    protected void setFieldsImmutable(boolean isEdit) {
+    
+    }
+
+    private Bug fetchFields() {
+        Bug b = new Bug(
+                false, descriptionTextArea.getText(), jdkTextField.getText(),
+                osTextField.getText(), priorityTextField.getText(), 
+                productTextField.getText(), severityTextField.getText(), 
+                summaryTextField.getText(), userTextField.getText(), 
+                versionTextField.getText()
+        );
+        
+        return b;
     }
 
 }

@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -24,8 +23,7 @@ public class MainGui extends javax.swing.JFrame {
      * will be using bugs. We should double check to see if this loads correctly
      * with auto-generated code.
      */
-    private final ArrayList bugList = new ArrayList<>();
-
+    protected BugTableModel model = new BugTableModel();
     /**
      * Creates new form EditView
      */
@@ -34,10 +32,6 @@ public class MainGui extends javax.swing.JFrame {
 
         // We can't actually use this code yet because our database manager 
         // does not fetch correctly.
-        for (int i = 1; i < 6; i++) {
-            bugList.add(new Bug(i)); //TODO: Refactor to tests
-        }
-
         /*
          for (Bug b : DatabaseManager.instance.listBugs()) {
          listModel.addElement(b);
@@ -51,16 +45,15 @@ public class MainGui extends javax.swing.JFrame {
                         "Exit Confirmation", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
                     System.exit(0);
-                    //TODO: check if we need to close our database connections
                 }
             }
         });
-        
+
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 int confirm = JOptionPane.showConfirmDialog(null,
-                        "Are You Sure to Close this Application?",
+                        "Are you sure you want to exit?",
                         "Exit Confirmation", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
                     System.exit(0);
@@ -70,6 +63,7 @@ public class MainGui extends javax.swing.JFrame {
         });
 
         //consider having custom TableRowSorter, test deafult first!
+        bugTable.setModel(model);
         bugTable.setAutoCreateRowSorter(true);
         bugTable.setAutoCreateColumnsFromModel(true);
 
@@ -79,7 +73,6 @@ public class MainGui extends javax.swing.JFrame {
         selectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         // Attach our row listener to create a ReportView when clicked on.
         selectionModel.addListSelectionListener(new RowListener(this));
-
     }
 
     /**
@@ -99,7 +92,7 @@ public class MainGui extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        jLabel1.setText("WELCOME to bugs and issues!");
+        jLabel1.setText("Welcome to bugs and issues!");
 
         addButton.setText("Add Bug");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +109,6 @@ public class MainGui extends javax.swing.JFrame {
             }
         });
 
-        bugTable.setModel(new BugTableModel(bugList));
         bugTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bugTableMouseClicked(evt);
@@ -139,7 +131,7 @@ public class MainGui extends javax.swing.JFrame {
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -152,7 +144,7 @@ public class MainGui extends javax.swing.JFrame {
                     .add(addButton)
                     .add(quitButton))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -174,6 +166,7 @@ public class MainGui extends javax.swing.JFrame {
         //new ReportView(this, b);
     }//GEN-LAST:event_bugTableMouseClicked
 
+    
     /**
      * @param args the command line arguments
      */
@@ -211,13 +204,11 @@ public class MainGui extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
-    private javax.swing.JTable bugTable;
+    protected javax.swing.JTable bugTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton quitButton;
     // End of variables declaration//GEN-END:variables
-
-
 
     /**
      * Class RowListener waits for a row to be clicked on and returns the
@@ -229,7 +220,7 @@ public class MainGui extends javax.swing.JFrame {
     private class RowListener implements ListSelectionListener {
 
         /**
-         * Reference to current
+         * Reference to current frame needed.
          */
         MainGui parent;
 
@@ -253,7 +244,7 @@ public class MainGui extends javax.swing.JFrame {
             ListSelectionModel ls = parent.bugTable.getSelectionModel();
             if (!e.getValueIsAdjusting() && !ls.isSelectionEmpty()) {
                 parent.setVisible(false);
-                Bug b = (Bug) bugList.get(bugTable.convertRowIndexToModel(ls.getLeadSelectionIndex()));
+                Bug b = (Bug) model.bugList.get(bugTable.convertRowIndexToModel(ls.getLeadSelectionIndex()));
 
                 new ReportView(parent, b).setVisible(true);
                 // We need to clear here in case we want to reorder.

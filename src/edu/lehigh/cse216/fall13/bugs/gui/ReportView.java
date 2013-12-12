@@ -7,7 +7,6 @@
 package edu.lehigh.cse216.fall13.bugs.gui;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
-import javax.swing.JFrame;
 
 /**
  *
@@ -15,10 +14,15 @@ import javax.swing.JFrame;
  */
 public class ReportView extends AbstractView{
 
-   
-    public ReportView(JFrame parent, Bug b) {
+   public ReportView() {      
+   }
+    
+    public ReportView(MainGui parent, Bug b) {
         super(parent);
-        titleLabel.setText("Bug " + b.getID());
+        setFieldsImmutable(true);
+        fillFields(b);
+        titleLabel.setText("Bug " + b.getID().toString());
+        setTitle("View Bug");
     }
     
 }

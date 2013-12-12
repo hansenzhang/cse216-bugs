@@ -1,6 +1,7 @@
 package edu.lehigh.cse216.fall13.bugs.business;
 
 import java.util.Date;
+import java.util.UUID;
 
 
 /**
@@ -8,15 +9,25 @@ import java.util.Date;
  * @author hansen
  */
 public class Bug implements java.io.Serializable {
+    private static final long serialVersionUID = 1L;
+    
     /**
      * Local fields
      */
-    private int bugID;
+    private String user;
+    private UUID bugID;
     private Date date;
     private String version;
     private boolean fixed;
     private String description;
-    private String category;
+    private String summary;
+    private String jdk;
+    private String priority;
+    private String product;
+    
+    private String os;
+    private String severity;
+    
 
     /**
      * Default constructor for testing
@@ -28,7 +39,7 @@ public class Bug implements java.io.Serializable {
      * Additional constructor for testing.
      * @param id 
      */
-    public Bug (int id) {
+    public Bug (UUID id) {
         this.bugID = id;
     }
     
@@ -41,18 +52,31 @@ public class Bug implements java.io.Serializable {
      * @param	description	String that stores the description of the bug
      * @param	category	String that stores the category of Bug
      */
-    public Bug(String version, String description, String category){
+    public Bug(String version, String description){
 	//Generate id (We may want to handle this in the controller instead
 	date = new Date();
 	//dunno if we have to do more for the date
 	fixed = false;
 	this.version = version;
 	this.description = description;
-	this.category = category;
     }
     
-    public Bug(int bugID, Date date, String version, boolean fixed, String description, String category) {
-        
+    public Bug(boolean fixed, String description, 
+            String jdk, String os, String priority, String product,
+            String summary, String severity, String user, String version
+    ) {
+        this.date = new Date();
+        this.bugID = UUID.randomUUID();       
+        this.fixed = fixed;
+        this.description = description;
+        this.jdk = jdk;
+        this.os = os;
+        this.priority = priority;
+        this.product = product;       
+        this.summary = summary;
+        this.severity = severity;
+        this.user = user;
+        this.version = version;                       
     }
 
     /**
@@ -62,17 +86,6 @@ public class Bug implements java.io.Serializable {
 	// not sure how we're doing this
     }
 
-    /**
-     * Used to add a comment to the class
-     * @param user
-     * @param msg
-     */
-    public void addComment(User user, String msg){
-	Comment c = new Comment(bugID, user, msg);
-	//add c to database, which may mean passing db manager as param
-    }
-
-    //Setters
     /**
      * Used to edit the description of the Bug
      * @param newDescription
@@ -89,7 +102,7 @@ public class Bug implements java.io.Serializable {
     }
 
     //Getters
-    public int getID(){
+    public UUID getID(){
 	return bugID;
     }
 
@@ -109,8 +122,36 @@ public class Bug implements java.io.Serializable {
 	return description;
     }
 
-    public String getCategory(){
-	return category;
+    public UUID getBugID() {
+        return bugID;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public String getJdk() {
+        return jdk;
+    }
+
+    public String getProduct() {
+        return product;
+    }
+
+    public String getOs() {
+        return os;
+    }
+
+    public String getSeverity() {
+        return severity;
+    }
+    
+    public String getPriority() {
+        return priority;
+    }
+    
+    public String getUser() {
+        return user;
     }
     
     @Override

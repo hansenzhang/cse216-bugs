@@ -56,19 +56,6 @@ public class BugTest {
     }
 
     /**
-     * Test of addComment method, of class Bug.
-     */
-    @Test
-    public void testAddComment() {
-        System.out.println("addComment");
-        User user = null;
-        String msg = "";
-        instance.addComment(user, msg);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of editDescription method, of class Bug.
      */
     @Test
@@ -154,18 +141,5 @@ public class BugTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getCategory method, of class Bug.
-     */
-    @Test
-    public void testGetCategory() {
-        System.out.println("getCategory");
-        String expResult = "";
-        String result = instance.getCategory();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    }   
 }

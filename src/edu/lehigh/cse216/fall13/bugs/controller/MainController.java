@@ -5,6 +5,7 @@ import edu.lehigh.cse216.fall13.bugs.business.Bug;
 import edu.lehigh.cse216.fall13.persistence.dao.PersistenceFactory;
 import edu.lehigh.cse216.fall13.persistence.interfaces.IBugsAndIssues;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  *
@@ -34,10 +35,10 @@ public class MainController {
     public Bug add(Bug b) {
         // TODO: we should check to see if the bug exists in the database already
         // and append to it if needed.
-        int bugId;
+        UUID bugId;
         dao.load();        
         bugId = dao.addBug(b);
-        
+        dao.save();
         return view(bugId);
     }
     
@@ -59,9 +60,9 @@ public class MainController {
      * @param bugId
      * @return 
      */
-    public Bug view(int bugId) {
+    public Bug view(UUID bugId) {
         dao.load();
-        //Bug b = dao.getBug(bugId);
+        Bug b = dao.getBug(bugId);
         dao.save();
         //return b;
         return null;
@@ -71,7 +72,7 @@ public class MainController {
      * Edit takes a bug pushes the new version to the database.  
      * @param b bug to be updated.
      */
-    public Bug edit(int bugId) {
+    public Bug edit(UUID bugId) {
         dao.load();
         dao.editBug(view(bugId));
         dao.save();

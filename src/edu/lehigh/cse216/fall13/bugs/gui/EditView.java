@@ -7,7 +7,6 @@
 package edu.lehigh.cse216.fall13.bugs.gui;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
-import javax.swing.JFrame;
 
 /**
  *
@@ -15,13 +14,18 @@ import javax.swing.JFrame;
  */
 public class EditView extends AbstractView{
 
+    public EditView() {
+    
+    }
+    
     /**
      *
      * @param p
      * @param b
      */
-    public EditView(JFrame p, Bug b) {
+    public EditView(MainGui p, Bug b) {
         super(p);
-        
+        titleLabel.setText("Editing Bug " + b.getID().toString());
+        setTitle("Edit Bug");
     }
 }

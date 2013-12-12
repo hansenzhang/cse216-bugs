@@ -14,12 +14,19 @@ import javax.swing.JFrame;
  */
 class AddView extends AbstractView{
 
+    
+    public AddView() {
+    
+    }
+    
     /**
      * 
      * @param aThis 
      */
-    public AddView(JFrame aThis) {
+    public AddView(MainGui aThis) {
         super(aThis);
+        titleLabel.setText("Add New Bug");
+        setTitle("Add Bug");
     }
     
 }
