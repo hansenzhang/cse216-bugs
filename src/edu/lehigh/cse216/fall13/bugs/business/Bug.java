@@ -18,7 +18,6 @@ public class Bug implements java.io.Serializable {
     private UUID bugID;
     private Date date;
     private String version;
-    private boolean fixed;
     private String description;
     private String summary;
     private String jdk;
@@ -45,7 +44,7 @@ public class Bug implements java.io.Serializable {
     /**
      * Constructor for the Bug object.
      * Creates a date object to store when it was created.
-     * Instantiates the global variables fixed, version, description, and category.
+     * Instantiates the global variables version, description, and category.
      * 
      * @param	version		String that stores the current version of the bug
      * @param	description	String that stores the description of the bug
@@ -55,14 +54,12 @@ public class Bug implements java.io.Serializable {
 	//Generate id (We may want to handle this in the controller instead
 	date = new Date();
 	//dunno if we have to do more for the date
-	fixed = false;
 	this.version = version;
 	this.description = description;
     }
     
     /**
      * 
-     * @param fixed
      * @param description
      * @param jdk
      * @param os
@@ -73,13 +70,12 @@ public class Bug implements java.io.Serializable {
      * @param user
      * @param version 
      */
-    public Bug(boolean fixed, String description, 
+    public Bug(String description, 
             String jdk, String os, String priority, String product,
-            String summary, String severity, String user, String version
+            String severity, String summary, String user, String version
     ) {
         this.date = new Date();
         this.bugID = UUID.randomUUID();       
-        this.fixed = fixed;
         this.description = description;
         this.jdk = jdk;
         this.os = os;
@@ -91,18 +87,12 @@ public class Bug implements java.io.Serializable {
         this.version = version;                       
     }
 
-    /**
-     * Used to show the bug has been fixed
-     */
-    public void fixed(){
-	fixed = true;
-    }
 
     //Getters and setters
-    public UUID getID(){
-	return bugID;
+    public UUID getBugID() {
+        return bugID;
     }
-
+    
     public Date getDate(){
 	return date;
     }
@@ -111,17 +101,11 @@ public class Bug implements java.io.Serializable {
 	return version;
     }
 
-    public boolean isFixed(){
-	return fixed;
-    }
-
     public String getDescription(){
 	return description;
     }
 
-    public UUID getBugID() {
-        return bugID;
-    }
+    
 
     public String getSummary() {
         return summary;

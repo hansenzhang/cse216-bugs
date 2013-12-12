@@ -24,7 +24,7 @@ public class EditView extends AbstractView{
     public EditView(MainGui p, Bug b) {
         super(p);        
         type = ViewType.EDIT;
-        titleLabel.setText("Editing Bug " + b.getID().toString());
+        titleLabel.setText("Editing Bug " + b.getBugID().toString());
         setTitle("Edit Bug");
         fillFields(b);
         currentBug = b;

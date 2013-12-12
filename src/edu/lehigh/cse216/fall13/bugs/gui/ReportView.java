@@ -27,7 +27,7 @@ public class ReportView extends AbstractView {
         setFieldsImmutable(false);
         fillFields(b);
         currentBug = b;
-        titleLabel.setText("Bug " + b.getID().toString());
+        titleLabel.setText("Bug " + b.getBugID().toString());
         setTitle("View Bug");        
     }    
 }

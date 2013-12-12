@@ -94,7 +94,7 @@ public class BugTableModel extends AbstractTableModel {
         Object value = null;
         switch (columnIndex) {
             case 0:
-                value = b.getID();
+                value = b.getBugID();
                 break;
             case 1:
                 value = b.getDescription();

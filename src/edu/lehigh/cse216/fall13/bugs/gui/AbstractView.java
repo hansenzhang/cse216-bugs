@@ -306,7 +306,7 @@ public abstract class AbstractView extends javax.swing.JFrame {
                 "Are you sure?",
                 "Remove", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
-            parent.model.remove(currentBug.getID());
+            parent.model.remove(currentBug.getBugID());
             parent.setVisible(true);
             this.setVisible(false);
             this.dispose();
@@ -405,7 +405,7 @@ public abstract class AbstractView extends javax.swing.JFrame {
      */
     private Bug fetchFields() {
         Bug b = new Bug(
-                false, descriptionTextArea.getText(), jdkTextField.getText(),
+                descriptionTextArea.getText(), jdkTextField.getText(),
                 osTextField.getText(), priorityTextField.getText(),
                 productTextField.getText(), severityTextField.getText(),
                 summaryTextField.getText(), userTextField.getText(),
