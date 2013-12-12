@@ -23,8 +23,7 @@ public class Bug implements java.io.Serializable {
     private String summary;
     private String jdk;
     private String priority;
-    private String product;
-    
+    private String product;    
     private String os;
     private String severity;
     
@@ -61,6 +60,19 @@ public class Bug implements java.io.Serializable {
 	this.description = description;
     }
     
+    /**
+     * 
+     * @param fixed
+     * @param description
+     * @param jdk
+     * @param os
+     * @param priority
+     * @param product
+     * @param summary
+     * @param severity
+     * @param user
+     * @param version 
+     */
     public Bug(boolean fixed, String description, 
             String jdk, String os, String priority, String product,
             String summary, String severity, String user, String version
@@ -80,28 +92,13 @@ public class Bug implements java.io.Serializable {
     }
 
     /**
-     * Used to update the version of the class
-     */
-    public void updateVersion(){
-	// not sure how we're doing this
-    }
-
-    /**
-     * Used to edit the description of the Bug
-     * @param newDescription
-     */
-    public void editDescription(String newDescription){
-	description = newDescription;
-    }
-
-    /**
      * Used to show the bug has been fixed
      */
     public void fixed(){
 	fixed = true;
     }
 
-    //Getters
+    //Getters and setters
     public UUID getID(){
 	return bugID;
     }
@@ -156,7 +153,6 @@ public class Bug implements java.io.Serializable {
     
     @Override
     public String toString() {
-        //This will need to be fixed to look nice in the Jlist
         return "Test Bug " + bugID;
     }
 

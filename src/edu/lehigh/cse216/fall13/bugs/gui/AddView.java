@@ -12,15 +12,18 @@ package edu.lehigh.cse216.fall13.bugs.gui;
  */
 class AddView extends AbstractView{
 
-    
+    /**
+     * Default constructor for testing.  Dont use otherwise.
+     */
     public AddView() {
         type = ViewType.ADD;
     }
     
-    /**
-     * 
-     * @param aThis 
-     */
+   /**
+    * This is the main constructor used.  This method helps to modify
+    * the abstract elements of AbstractView
+    * @param aThis
+    */
     public AddView(MainGui aThis) {
         super(aThis);
         type = ViewType.ADD;

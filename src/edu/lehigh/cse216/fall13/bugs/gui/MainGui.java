@@ -24,19 +24,13 @@ public class MainGui extends javax.swing.JFrame {
      * with auto-generated code.
      */
     protected BugTableModel model = new BugTableModel();
+    
     /**
-     * Creates new form EditView
+     * Default constructor for MainGui.
      */
     public MainGui() {
         initComponents();
 
-        // We can't actually use this code yet because our database manager 
-        // does not fetch correctly.
-        /*
-         for (Bug b : DatabaseManager.instance.listBugs()) {
-         listModel.addElement(b);
-         }
-         */
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -56,13 +50,12 @@ public class MainGui extends javax.swing.JFrame {
                         "Are you sure you want to exit?",
                         "Exit Confirmation", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
-                    System.exit(0);
-                    //TODO: check if we need to close our database connections
+                    System.exit(0);                    
                 }
             }
         });
 
-        //consider having custom TableRowSorter, test deafult first!
+        //attach our custom model to our table and fix sorters.s
         bugTable.setModel(model);
         bugTable.setAutoCreateRowSorter(true);
         bugTable.setAutoCreateColumnsFromModel(true);
@@ -102,12 +95,6 @@ public class MainGui extends javax.swing.JFrame {
         });
 
         quitButton.setText("Quit");
-
-        jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jScrollPane1MouseClicked(evt);
-            }
-        });
 
         bugTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -151,23 +138,26 @@ public class MainGui extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Method to launch new AddView.
+     * @param evt 
+     */
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         this.setVisible(false);
         new AddView(this).setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
 
-    private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jScrollPane1MouseClicked
-
+    /**
+     * Event to clear the current frame when bugs are clicked on.
+     * @param evt 
+     */
     private void bugTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bugTableMouseClicked
         this.setVisible(false);
-        //Bug b = 
-        //new ReportView(this, b);
     }//GEN-LAST:event_bugTableMouseClicked
 
     
     /**
+     * Main method.
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -220,7 +210,7 @@ public class MainGui extends javax.swing.JFrame {
     private class RowListener implements ListSelectionListener {
 
         /**
-         * Reference to current frame needed.
+         * Reference to current frame.
          */
         MainGui parent;
 
@@ -228,6 +218,7 @@ public class MainGui extends javax.swing.JFrame {
          * Default constructor for rowlistener class.
          *
          * @param m
+         *      Parent gui for reference to bugTable model.
          */
         public RowListener(MainGui m) {
             this.parent = m;
@@ -237,7 +228,8 @@ public class MainGui extends javax.swing.JFrame {
          * Method valueChanged checks to see which row is clicked on for our
          * JTable.
          *
-         * @param e
+         * @param e 
+         *      Event captured.
          */
         @Override
         public void valueChanged(ListSelectionEvent e) {
@@ -248,7 +240,7 @@ public class MainGui extends javax.swing.JFrame {
 
                 new ReportView(parent, b).setVisible(true);
                 // We need to clear here in case we want to reorder.
-                // Note that this calls this method again...
+                // Note that this fires the row listener again!!
                 ls.clearSelection();
             }
 

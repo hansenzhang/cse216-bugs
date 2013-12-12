@@ -1,13 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.lehigh.cse216.fall13.bugs.gui;
 
 import edu.lehigh.cse216.fall13.bugs.business.Bug;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,21 +10,28 @@ import javax.swing.JOptionPane;
  * @author Group A
  */
 public abstract class AbstractView extends javax.swing.JFrame {
+
+    /**
+     * Enum ViewType allows us to distinguish the difference for submit buttons.
+     */
     public enum ViewType {
+
         ABSTRACT, REPORT, ADD, EDIT
     }
+
     /**
-     * Capture the parent frame when moving between frames
+     * Capture the parent frame when moving between frames.
      */
     private MainGui parent;
     protected Bug currentBug;
-    protected ViewType type; 
+    protected ViewType type;
+
     /**
-     * The no arg constructor should be used for ONLY testing. Creates new form AddView
+     * The no arg constructor should be used for ONLY testing.
      */
     public AbstractView() {
         type = ViewType.ABSTRACT;
-        parent = null; //removing warning...
+        parent = null; // to suppress warning.
         initComponents();
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -43,18 +45,17 @@ public abstract class AbstractView extends javax.swing.JFrame {
     }
 
     /**
-     * The parent constructor
+     * The MainGui constructor to capture our parent frame.
      *
-     * @param p
+     * @param p The parent Frame.
      */
     public AbstractView(MainGui p) {
         type = ViewType.ABSTRACT;
         this.parent = p;
 
         initComponents();
-        // We need this to attach any WindowListener events to this JFrame
-        //this.addWindowListener(AbstractView.this);
-        
+
+        // anonymous declaration of window listener to have custom window actions.
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -281,35 +282,44 @@ public abstract class AbstractView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Method to submit edited or new bugs. We need to use an ENUM here to
+     * determine the types of the child frames.
+     *
+     * @param evt
+     */
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        if (type == ViewType.EDIT) {
-            Bug b = fetchFields();
-            b.setBugId(currentBug.getBugID());
-            parent.model.add(b);
-            new ReportView(parent, b).setVisible(true);
-            this.setVisible(false);
-            this.dispose();
-        } else {        
         Bug b = fetchFields();
+        if (type == ViewType.EDIT) {
+            b.setBugId(currentBug.getBugID());
+        }
         parent.model.add(b);
         new ReportView(parent, b).setVisible(true);
         this.setVisible(false);
         this.dispose();
-        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
+    /**
+     * Method to delete Bug from system.
+     * @param evt
+     */
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
         int confirm = JOptionPane.showConfirmDialog(null,
-                        "Are you sure?",
-                        "Remove", JOptionPane.YES_NO_OPTION);
-                if (confirm == JOptionPane.YES_OPTION) {
-                    parent.model.remove(currentBug.getID());
-                    parent.setVisible(true);
-                    this.setVisible(false);
-                    this.dispose();
-                }
+                "Are you sure?",
+                "Remove", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            parent.model.remove(currentBug.getID());
+            parent.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+        }
     }//GEN-LAST:event_removeButtonActionPerformed
 
+    /**
+     * Method to spawn new EditView.
+     *
+     * @param evt
+     */
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         new EditView(parent, currentBug).setVisible(true);
         this.setVisible(false);
@@ -345,15 +355,17 @@ public abstract class AbstractView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     /**
+     * Method fillFields takes the fields from a bug and fills the local
+     * jTextFields.
      *
-     * @param b
+     * @param b Bug to be displayed.
      */
     protected void fillFields(Bug b) {
         descriptionTextArea.setText(b.getDescription());
         jdkTextField.setText(b.getJdk());
         osTextField.setText(b.getOs());
         priorityTextField.setText(b.getPriority());
-        productTextField.setText(b.getProduct());        
+        productTextField.setText(b.getProduct());
         severityTextField.setText(b.getSeverity());
         summaryTextField.setText(b.getSummary());
         userTextField.setText(b.getUser());
@@ -361,41 +373,60 @@ public abstract class AbstractView extends javax.swing.JFrame {
     }
 
     /**
+     * Method setTitleText allows the title for the frame to be custom. We want
+     * to call this because the abstract title should never be used.
      *
      * @param s
      */
     protected void setTitleText(String s) {
         titleLabel.setText(s);
     }
-    
+
+    /**
+     * Method makes fields unchangeable for viewing in ReportView.
+     *
+     * @param isEdit
+     */
     protected void setFieldsImmutable(boolean isEdit) {
         descriptionTextArea.setEditable(isEdit);
         jdkTextField.setEditable(isEdit);
         osTextField.setEditable(isEdit);
         priorityTextField.setEditable(isEdit);
-        productTextField.setEditable(isEdit);        
+        productTextField.setEditable(isEdit);
         severityTextField.setEditable(isEdit);
         summaryTextField.setEditable(isEdit);
         userTextField.setEditable(isEdit);
         versionTextField.setEditable(isEdit);
     }
 
+    /**
+     * Method fetchFields takes the active fields of the JFrame and returns a
+     * new bug.
+     *
+     * @return bug to be added.
+     */
     private Bug fetchFields() {
         Bug b = new Bug(
                 false, descriptionTextArea.getText(), jdkTextField.getText(),
-                osTextField.getText(), priorityTextField.getText(), 
-                productTextField.getText(), severityTextField.getText(), 
-                summaryTextField.getText(), userTextField.getText(), 
+                osTextField.getText(), priorityTextField.getText(),
+                productTextField.getText(), severityTextField.getText(),
+                summaryTextField.getText(), userTextField.getText(),
                 versionTextField.getText()
         );
-        
+
         return b;
     }
 
+    /**
+     * Helper to hide private button.
+     */
     protected void hideEditButton() {
         editButton.setVisible(false);
     }
-    
+
+    /**
+     * Helper to hide private button.
+     */
     protected void hideRemoveButton() {
         removeButton.setVisible(false);
     }

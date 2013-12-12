@@ -79,6 +79,11 @@ public class MainController {
         return view(bugId);
     }
     
+    /**
+     * Remove takes a unique identifier and removes the cooresponding bug from
+     * the database.
+     * @param bugId 
+     */
     public void remove(UUID bugId) {
         dao.load();
         dao.deleteBug(bugId);
